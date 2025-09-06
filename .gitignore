@@ -6,3 +6,4 @@
 .run
 cert
 __pycache__
+static/users_images
