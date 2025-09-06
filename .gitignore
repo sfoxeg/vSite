@@ -2,4 +2,7 @@
 .env
 .venv
 .idea
+.vscode
+.run
+cert
 __pycache__
