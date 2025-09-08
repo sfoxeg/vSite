@@ -1845,7 +1845,7 @@ iframe {
   }
 }
 .mainmenu ul li.active > a {
-  text-decoration: line-through;
+
   color: #f24570;
 }
 .mainmenu ul li a {
