@@ -122,7 +122,8 @@ STATICFILES_DIRS: list[Path] = [BASE_DIR / 'static']
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+#from vSite.user.models.model_user import User
+#import vSite.user.models.model_user
 AUTH_USER_MODEL = 'user.User'
 
 LOGIN_URL = '/user/login/'

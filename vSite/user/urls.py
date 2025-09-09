@@ -1,8 +1,5 @@
 from django.urls import path
-from user.views.view_login import login
-from user.views.view_register import register
-from user.views.view_logout import logout
-from user.views.view_profile import profile
+from user.views import login, register,logout, profile
 
 
 app_name = 'user'
