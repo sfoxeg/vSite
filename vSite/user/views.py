@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib import auth
@@ -27,6 +28,11 @@ def login(request) -> HttpResponse:
 def register(request) -> HttpResponse:
     return render(request, 'user/register.html')
 
+@login_required
 def logout(request) -> HttpResponse:
     auth.logout(request)
     return HttpResponseRedirect(reverse('main:index'))
+
+@login_required
+def profile(request) -> HttpResponse:
+    return render(request, 'user/profile.html')
