@@ -10,8 +10,9 @@
                 <div class="banner__content wow fadeInLeft" data-wow-duration="1.5s">
                     <div class="banner__title">
                         {% if not user.is_authenticated %}
-                        <h2 style="text-transform: none;">Приходи к нам, у нас есть печеньки</h2>
-                        <p>Присоединяйся к нашей компании. С нами ты сможешь ползать по стенам, как свин-паук и скакать по скалам аки козел безрогий.</p>
+                        <h2 style="text-transform: none;">Скалолазные знакомства</h2>
+                        <p>Если ты тоже считаешь, что крепкая пара - это когда оба с одинаковыми интересами,
+                            и эти интересы = скалолазание, то ты точно по адресу.</p>
                         <a href="{% url "user:register" %}" class="default-btn style-2"><span>Талончик бери</span></a>
                         {% else %}
                         <h2 style="text-transform: none;">О, опять ты?</h2>
@@ -53,7 +54,7 @@
                         <div class="about__top">
                             <div class="about__content">
                                 <h3>Дороу, неудачники</h3>
-                                <p>Тут, крч, о том насколько тут охуенно. Один хрен это никто не читает. Пойду чайку наебну</p>
+                                <p>Здесь ты сможешь найти себе и постоянного напарника, и компанию на длительный скальный выезд, а может и найти нечто большее.</p>
                             </div>
                         </div>
                         <!--div class="about__bottom">
@@ -127,14 +128,21 @@
                             <div class="banner__list">
                                 <div class="row">
                                     <div class="col-6">
-                                        <label>Я</label>
+                                        <label>Город</label>
+                                        <div class="banner__inputlist">
+                                            <select id="country" name="country">
+                                                <option value="spb" selected>Помойка всея Руси</option>
+                                                <option value="msk">Default City</option>
+                                            </select>
+                                        </div>
+                                        <!--label>Я</label>
                                         <div class="banner__inputlist">
                                             <select>
                                                 <option selected>с писькой</option>
                                                 <option value="male">наружу</option>
                                                 <option value="female">унутрь</option>
                                             </select>
-                                        </div>
+                                        </div-->
                                     </div>
                                     <div class="col-6">
                                         <label>Ищу</label>
@@ -214,13 +222,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <label>Город</label>
-                                        <div class="banner__inputlist">
-                                            <select id="country" name="country">
-                                                <option value="spb" selected>Помойка всея Руси</option>
-                                                <option value="msk">Default City</option>
-                                            </select>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
