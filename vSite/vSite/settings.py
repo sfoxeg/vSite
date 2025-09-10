@@ -32,7 +32,7 @@ else:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', '192.168.31.1', '192.168.31.4', '93.100.104.160', 'mrsega.duckdns.org']
+ALLOWED_HOSTS = ['*', '0.0.0.0', '127.0.0.1', '192.168.31.1', '192.168.31.4', '93.100.104.160', 'mrsega.duckdns.org']
 
 # Application definition
 
