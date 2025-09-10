@@ -4,21 +4,10 @@
 ## Установка
 ```shell
 git clone https://github.com/sfoxeg/vSite.git
-```
-
-```shell
 cd vSite
-```
-```shell
 pip install -r requirements.txt
-```
-```shell
 py manage.py makemigrations
-```
-```shell
 py manage.py migrate
-```
-```shell
 py manage.py load_data
 ```
 
