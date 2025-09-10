@@ -8,9 +8,9 @@ class Command(BaseCommand):
         with open('./start_data/cities.json', 'rb') as f:
             data = json.load(f)
 
-            for i in data:
-                print(i)
+            for _ in data:
                 city = City()
-                city.name = i
+                city.name = _
                 city.save()
+                print(_)
         print('finished')

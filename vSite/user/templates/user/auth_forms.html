@@ -1,0 +1,24 @@
+{% extends "light.html" %}
+{% load static %}
+{% block content %}
+<!-- ================> login section start here <================== -->
+<section class="log-reg">
+    <div class="top-menu-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-7">
+                    <div class="logo">
+                        <a href="{% url "main:index" %}"><img src="{% static "assets/images/logo/logo.png" %}"
+                        alt="logo"></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-5">
+                    <a href="{% url "main:index" %}" class="backto-home"><i class="fas fa-chevron-left"></i> Назад</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% block form %}{% endblock %}
+</section>
+<!-- ================> login section end here <================== -->
+{% endblock %}

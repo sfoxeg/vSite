@@ -1,23 +1,6 @@
-{% extends "light.html" %}
+{% extends "user/auth_forms.html" %}
 {% load static %}
-{% block content %}
-<!-- ================> login section start here <================== -->
-<section class="log-reg">
-    <div class="top-menu-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-7">
-                    <div class="logo">
-                        <a href="{% url "main:index" %}"><img src="{% static "assets/images/logo/logo.png" %}"
-                        alt="logo"></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-5">
-                    <a href="{% url "main:index" %}" class="backto-home"><i class="fas fa-chevron-left"></i> Назад</a>
-                </div>
-            </div>
-        </div>
-    </div>
+{% block form %}
     <div class="container">
         <div class="row">
             <div class="image image-log"></div>
@@ -27,49 +10,47 @@
                         <h2 class="title">CatchMe</h2>
                     </div>
                     <div class="main-content inloginp">
-                    <form action="{% url "user:login" %}" method="post">
-                        <div class="form-group">
-                            <p class="f-pass"><a href="{% url "user:register" %}">У меня нет аккаунта</a></p>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="username" class="my-form-control"
-                                   placeholder="Email">
-                            {% if form.username.errors %}
-                            <div class="warning">{{ form.username.errors }}</div>
-                            {% endif %}
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="password" class="my-form-control"
-                                   placeholder="Пароль">
-                            {% if form.password.errors %}
-                            <div class="warning">{{ form.password.errors }}</div>
-                            {% endif %}
-                        </div>
-                        <p class="f-pass"><a href="#">Забыли пароль?</a></p>
-                        <div class="text-center">
-                            {% csrf_token %}
-                            <button type="submit" class="default-btn">
-                                <span>Войти</span>
-                            </button>
-                        </div>
-                        <!---div class="or">
-                            <p>OR</p>
-                        </div>
-                        <div class="or-content">
-                            <p>Sign up with your email</p>
-                            <a href="#" class="default-btn reverse">
-                                <img src={% static "assets/images/login/google.png" %} alt="google">
-                                <span>Sign Up with Google</span>
-                            </a>
-                            <p class="or-signup"> Don't have an account? <a href="{% url "user:register" %}">Sign up here</a>
-                            </p>
-                        </div --->
-                    </form>
+                        <form action="{% url "user:login" %}" method="post">
+                            <div class="form-group">
+                                <p class="f-pass"><a href="{% url "user:register" %}">У меня нет аккаунта</a></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="username" class="my-form-control"
+                                       placeholder="Email">
+                                {% if form.username.errors %}
+                                <div class="warning">{{ form.username.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="my-form-control"
+                                       placeholder="Пароль">
+                                {% if form.password.errors %}
+                                <div class="warning">{{ form.password.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <p class="f-pass"><a href="#">Забыли пароль?</a></p>
+                            <div class="text-center">
+                                {% csrf_token %}
+                                <button type="submit" class="default-btn">
+                                    <span>Войти</span>
+                                </button>
+                            </div>
+                            <!---div class="or">
+                                <p>OR</p>
+                            </div>
+                            <div class="or-content">
+                                <p>Sign up with your email</p>
+                                <a href="#" class="default-btn reverse">
+                                    <img src={% static "assets/images/login/google.png" %} alt="google">
+                                    <span>Sign Up with Google</span>
+                                </a>
+                                <p class="or-signup"> Don't have an account? <a href="{% url "user:register" %}">Sign up here</a>
+                                </p>
+                            </div --->
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<!-- ================> login section end here <================== -->
 {% endblock %}

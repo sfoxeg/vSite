@@ -1,14 +1,21 @@
+{% load static %}
 <!-- ================> Banner section start here <================== -->
-<div class="banner banner--style2 padding-top bg_img" style="background-image: url(assets/images/banner/bg-2.jpg);">
+<div class="banner banner--style2 padding-top bg_img" style="background-image: url({% static "assets/images/banner/bg-2.jpg" %});">
     <div class="container">
         <div class="banner__wrapper">
             <div class="row g-0 justify-content-center">
                 <div class="col-lg-4 col-12">
                     <div class="banner__content wow fadeInLeft" data-wow-duration="1.5s">
                         <div class="banner__title">
-                            <h2>New Places, Unforgettable Dating.</h2>
-                            <p>Join our international family today! Please call us for more info.</p>
-                            <a href="membership.html" class="default-btn style-2"><span>Get A Membership</span></a>
+                            {% if not user.is_authenticated %}
+                            <h2 style="text-transform: none;">Скалолазные знакомства</h2>
+                            <p>Если ты тоже считаешь, что крепкая пара - это когда оба с одинаковыми интересами,
+                                и эти интересы = скалолазание, то ты точно по адресу.</p>
+                            <a href="{% url "user:register" %}" class="default-btn style-2"><span>Талончик бери</span></a>
+                            {% else %}
+                            <h2 style="text-transform: none;">О, опять ты?</h2>
+                            <p>Делай свое грязное дело и проваливай</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

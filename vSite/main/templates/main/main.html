@@ -1,48 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<!-- ================> Banner section start here <================== -->
-<div class="banner banner--style2 padding-top bg_img" style="background-image: url({% static "assets/images/banner/bg-2.jpg" %});">
-<div class="container">
-    <div class="banner__wrapper">
-        <div class="row g-0 justify-content-center">
-            <div class="col-lg-4 col-12">
-                <div class="banner__content wow fadeInLeft" data-wow-duration="1.5s">
-                    <div class="banner__title">
-                        {% if not user.is_authenticated %}
-                        <h2 style="text-transform: none;">Скалолазные знакомства</h2>
-                        <p>Если ты тоже считаешь, что крепкая пара - это когда оба с одинаковыми интересами,
-                            и эти интересы = скалолазание, то ты точно по адресу.</p>
-                        <a href="{% url "user:register" %}" class="default-btn style-2"><span>Талончик бери</span></a>
-                        {% else %}
-                        <h2 style="text-transform: none;">О, опять ты?</h2>
-                        <p>Делай свое грязное дело и проваливай</p>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8 col-12">
-                <div class="banner__thumb wow fadeInUp" data-wow-duration="1.5s">
-                    <img src="{% static "assets/images/banner/02.png" %}" alt="banner">
-                    <div class="banner__thumb--shape">
-                        <div class="shapeimg shapeimg__one">
-                            <img src="{% static "assets/images/banner/shape/home2/01.png" %}" alt="dating thumb">
-                        </div>
-                        <div class="shapeimg shapeimg__two">
-                            <img src="{% static "assets/images/banner/shape/home2/02.png" %}" alt="dating thumb">
-                        </div>
-                        <div class="shapeimg shapeimg__three">
-                            <img src="{% static "assets/images/banner/shape/home2/03.png" %}" alt="dating thumb">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<!-- ================> Banner section end here <================== -->
 
+{% include "main/banner.html"  %}
 
 <!-- ================> About section start here <================== -->
 <div class="about about--style2 padding-top pt-xl-0">
@@ -54,7 +14,7 @@
                         <div class="about__top">
                             <div class="about__content">
                                 <h3>Дороу, неудачники</h3>
-                                <p>Здесь ты сможешь найти себе и постоянного напарника, и компанию на длительный скальный выезд, а может и найти нечто большее.</p>
+                                <p>Здесь ты сможешь найти себе и постоянного напарника, и компанию на длительный скальный выезд, а может и найти нечто большее</p>
                             </div>
                         </div>
                         <!--div class="about__bottom">
@@ -160,68 +120,29 @@
                                                 <div class="banner__inputlist">
                                                     <select>
                                                         <option value="18" selected>18</option>
-                                                        <option value="19">19</option>
-                                                        <option value="20">20</option>
-                                                        <option value="21">21</option>
-                                                        <option value="22">22</option>
-                                                        <option value="23">23</option>
-                                                        <option value="24">24</option>
-                                                        <option value="25">25</option>
-                                                        <option value="26">26</option>
-                                                        <option value="27">27</option>
-                                                        <option value="28">28</option>
-                                                        <option value="29">29</option>
-                                                        <option value="30">30</option>
-                                                        <option value="31">31</option>
-                                                        <option value="32">32</option>
-                                                        <option value="33">33</option>
-                                                        <option value="34">34</option>
-                                                        <option value="35">35</option>
-                                                        <option value="36">36</option>
-                                                        <option value="37">37</option>
-                                                        <option value="38">38</option>
-                                                        <option value="39">39</option>
-                                                        <option value="40">40</option>
+                                                        {% for c in age %}
+                                                        <option value="{{c}}">{{c}}</option>
+                                                        {% endfor %}
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="banner__inputlist">
                                                     <select>
-                                                        <option value="18">18</option>
-                                                        <option value="19">19</option>
-                                                        <option value="20">20</option>
-                                                        <option value="21">21</option>
-                                                        <option value="22">22</option>
-                                                        <option value="23">23</option>
-                                                        <option value="24">24</option>
-                                                        <option value="25" selected>25</option>
-                                                        <option value="26">26</option>
-                                                        <option value="27">27</option>
-                                                        <option value="28">28</option>
-                                                        <option value="29">29</option>
-                                                        <option value="30">30</option>
-                                                        <option value="31">31</option>
-                                                        <option value="32">32</option>
-                                                        <option value="33">33</option>
-                                                        <option value="34">34</option>
-                                                        <option value="35">35</option>
-                                                        <option value="36">36</option>
-                                                        <option value="37">37</option>
-                                                        <option value="38">38</option>
-                                                        <option value="39">39</option>
-                                                        <option value="40">40</option>
+                                                        {% for c in age %}
+                                                        <option value="{{c}}">{{c}}</option>
+                                                        {% endfor %}
+                                                        <option value="80" selected>80</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-12">
-
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="default-btn reverse d-block"><span>Вперде</span>
+                            <button type="submit" class="default-btn reverse d-block"><span>Найти</span>
                             </button>
                         </form>
                     </div>
