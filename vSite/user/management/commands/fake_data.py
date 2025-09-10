@@ -13,11 +13,11 @@ class Command(BaseCommand):
         fake = Faker()
 
         user = User()
-        sex = fake.boolean()
         userprofile = UserProfile(user=user)
         userprofile.user.email = fake.email()
         userprofile.user.set_password(fake.password())
         userprofile.user.date_of_birth = fake.date_of_birth()
+        sex = fake.boolean()
         userprofile.user.sex = sex
         userprofile.description = fake.text()
         userprofile.height = fake.random_int(150, 192)
