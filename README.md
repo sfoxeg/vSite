@@ -15,3 +15,7 @@ py manage.py load_data
 ```shell
 py manage.py create_users
 ```
+И произвольное число тестовых пользователей
+```shell
+py manage.py fake_data -c 100
+```
