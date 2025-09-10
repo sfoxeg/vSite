@@ -21,3 +21,8 @@ py manage.py migrate
 ```shell
 py manage.py load_data
 ```
+
+Опционально можно добавить тестовых админов
+```shell
+py manage.py create_users
+```

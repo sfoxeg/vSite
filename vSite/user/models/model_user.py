@@ -10,9 +10,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     sex = models.BooleanField(default=False, verbose_name='Пол')
     date_of_birth = models.DateField(default=False, verbose_name='Дата рождения')
     is_active = models.BooleanField(default=True, verbose_name='Активный')
-    is_admin = models.BooleanField(default=False, verbose_name='Админ')
     is_staff = models.BooleanField(default=False, verbose_name='Админ')
-    is_superuser = models.BooleanField(default=False, verbose_name='Админ')
+    is_superuser = models.BooleanField(default=False, verbose_name='Суперюзер')
     date_joined = models.DateTimeField(default=timezone.now)
 
     objects = UserManager()
