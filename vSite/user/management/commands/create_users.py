@@ -3,6 +3,8 @@ from user.models import User
 
 
 class Command(BaseCommand):
+    help = u'Создание тестовых пользователей'
+
     def create_user(self, email, password, sex):
         user = User()
         user.email = email
