@@ -791,15 +791,6 @@ body h6 {
   align-items: center;
 }
 
-.widget.shop-widget .widget-wrapper .shop-menu li .shop-submenu li a, .blog__content h3, .log-reg .log-reg-inner .section-header.inloginp .title, .default-btn, .mainmenu ul li a, body h1,
-body h2,
-body h3,
-body h4,
-body h5,
-body h6 {
-  text-transform: capitalize;
-}
-
 body, body h1,
 body h2,
 body h3,
@@ -5949,7 +5940,6 @@ a[class*=lightcase-icon-] {
   color: #fff;
   padding: 18px;
   border: none;
-  text-transform: capitalize;
 }
 @media (max-width: 575px) {
   .shop-cart .section-wrapper .cart-top table thead tr th {
@@ -6465,23 +6455,11 @@ a[class*=lightcase-icon-] {
   list-style-type: disc;
 }
 
-.userui a {
-  padding 0px 0px !important
+.warning{
+  color: #f24570;
 }
 
-.useran {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.avatarui{
-  width: 44px;
-  height: 44px;
-  border-radius: 50%; /* Делает контейнер круглым */
-  overflow: hidden; /* Обрезает всё, что выходит за пределы круга */
-  display: flex; /* Для центрирования изображения внутри */
-  justify-content: center; /* Центрирование по горизонтали */
-  align-items: center; /* Центрирование по вертикали */
+.info{
+  color: #618f45;
 }
 /*# sourceMappingURL=style.css.map */

@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-5">
-                    <a href="{% url "main:index" %}" class="backto-home"><i class="fas fa-chevron-left"></i> Хочу домой</a>
+                    <a href="{% url "main:index" %}" class="backto-home"><i class="fas fa-chevron-left"></i> Назад</a>
                 </div>
             </div>
         </div>
@@ -24,23 +24,33 @@
             <div class="col-lg-7">
                 <div class="log-reg-inner">
                     <div class="section-header inloginp">
-                        <h2 class="title">Ausweis</h2>
+                        <h2 class="title">CatchMe</h2>
                     </div>
                     <div class="main-content inloginp">
-                        <form action="{% url "user:login" %}" method="post">
+                    <form action="{% url "user:login" %}" method="post">
                         <div class="form-group">
-                            <label>Мылом в глаз или в жо... в поле впиши</label>
-                            <input type="text" name="username" class="my-form-control" placeholder="email">
-                            {% csrf_token %}
+                            <p class="f-pass"><a href="{% url "user:register" %}">У меня нет аккаунта</a></p>
                         </div>
                         <div class="form-group">
-                            <label>Скажи пароль и проходи</label>
+                            <input type="text" name="username" class="my-form-control"
+                                   placeholder="Email">
+                            {% if form.username.errors %}
+                            <div class="warning">{{ form.username.errors }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
                             <input type="password" name="password" class="my-form-control"
-                                   placeholder="дер пароль">
+                                   placeholder="Пароль">
+                            {% if form.password.errors %}
+                            <div class="warning">{{ form.password.errors }}</div>
+                            {% endif %}
                         </div>
-                        <p class="f-pass">Потерял аусвайс? <a href="#">проследуйте в газенваген</a></p>
+                        <p class="f-pass"><a href="#">Забыли пароль?</a></p>
                         <div class="text-center">
-                            <button type="submit" class="default-btn"><span>Жми, ёпт</span></button>
+                            {% csrf_token %}
+                            <button type="submit" class="default-btn">
+                                <span>Войти</span>
+                            </button>
                         </div>
                         <!---div class="or">
                             <p>OR</p>
@@ -54,7 +64,7 @@
                             <p class="or-signup"> Don't have an account? <a href="{% url "user:register" %}">Sign up here</a>
                             </p>
                         </div --->
-                        </form>
+                    </form>
                     </div>
                 </div>
             </div>

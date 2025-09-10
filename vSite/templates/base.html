@@ -54,7 +54,7 @@
                     <div class="navbar-nav mainmenu">
                         <ul>
                             <li class="active">
-                                <a href="{% url "main:index" %}">Home</a>
+                                <a href="{% url "main:index" %}">Главная</a>
                             </li>
                             <li>
                                 {% if not user.is_authenticated %}
@@ -90,6 +90,13 @@
 <!-- ================> Footer section start here <================== -->
 <footer class="footer footer--style2">
 
+    <div class="footer__bottom wow fadeInUp" data-wow-duration="1.5s">
+        <div class="container">
+            <div class="footer__content text-center">
+                <p class="mb-0">All Rights Reserved &copy; <a href="{% url "main:index" %}">CatchMe</a></p>
+            </div>
+        </div>
+    </div>
 </footer>
 <!-- ================> Footer section end here <================== -->
 

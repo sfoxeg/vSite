@@ -131,18 +131,13 @@
                                         <label>Город</label>
                                         <div class="banner__inputlist">
                                             <select id="country" name="country">
-                                                <option value="spb" selected>Помойка всея Руси</option>
-                                                <option value="msk">Default City</option>
+                                                {% for c in city %}
+                                                    {% for id, name in c.items %}
+                                                <option value="{{id}}">{{name}}</option>
+                                                    {% endfor %}
+                                                {% endfor %}
                                             </select>
                                         </div>
-                                        <!--label>Я</label>
-                                        <div class="banner__inputlist">
-                                            <select>
-                                                <option selected>с писькой</option>
-                                                <option value="male">наружу</option>
-                                                <option value="female">унутрь</option>
-                                            </select>
-                                        </div-->
                                     </div>
                                     <div class="col-6">
                                         <label>Ищу</label>
@@ -236,7 +231,4 @@
     </div>
 </div>
 <!-- ================> About section end here <================== -->
-
-
-
 {% endblock %}
