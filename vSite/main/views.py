@@ -6,12 +6,15 @@ from utils.city_list import city_list
 
 
 def index(request) -> HttpResponse:
+    un = UserProfile.objects.get(user=request.user)
+
     names = []
     users = UserProfile.objects.order_by('-id')[:10]
     for usr in users:
         names.append(f'{usr.first_name} {usr.last_name}')
 
     context = {
+        "name": f'{un.first_name} {un.last_name}',
         "city": city_list(City),
         "names": names,
         "age": range(18, 80)

@@ -30,16 +30,16 @@
                                 <button class="nav-link active" id="gt1-tab" data-bs-toggle="tab" data-bs-target="#gt1" type="button" role="tab" aria-controls="gt1" aria-selected="true"><i class="fa-solid fa-house"></i> Лента</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="gt2-tab" data-bs-toggle="tab" data-bs-target="#gt2" type="button" role="tab" aria-controls="gt2" aria-selected="false"><i class="fa-solid fa-users"></i> Профиль <span>30</span></button>
+                                <button class="nav-link" id="gt2-tab" data-bs-toggle="tab" data-bs-target="#gt2" type="button" role="tab" aria-controls="gt2" aria-selected="false"><i class="fa-solid fa-users"></i> Профиль</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="gt4-tab" data-bs-toggle="tab" data-bs-target="#gt4" type="button" role="tab" aria-controls="gt4" aria-selected="false"><i class="fa-solid fa-users"></i> Друзья <span>16</span></button>
+                                <button class="nav-link" id="gt4-tab" data-bs-toggle="tab" data-bs-target="#gt4" type="button" role="tab" aria-controls="gt4" aria-selected="false"><i class="fa-solid fa-users"></i> Друзья</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="gt5-tab" data-bs-toggle="tab" data-bs-target="#gt5" type="button" role="tab" aria-controls="gt5" aria-selected="false"><i class="fa-solid fa-layer-group"></i> Группы <span>08</span></button>
+                                <button class="nav-link" id="gt5-tab" data-bs-toggle="tab" data-bs-target="#gt5" type="button" role="tab" aria-controls="gt5" aria-selected="false"><i class="fa-solid fa-layer-group"></i> Группы</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="gt6-tab" data-bs-toggle="tab" data-bs-target="#gt6" type="button" role="tab" aria-controls="gt6" aria-selected="false"><i class="fa-solid fa-photo-film"></i> Фото <span>06</span></button>
+                                <button class="nav-link" id="gt6-tab" data-bs-toggle="tab" data-bs-target="#gt6" type="button" role="tab" aria-controls="gt6" aria-selected="false"><i class="fa-solid fa-photo-film"></i> Фото</button>
                             </li>
                         </ul>
                     </div>
@@ -53,26 +53,6 @@
                         <div class="group__bottom--left">
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="gt1" role="tabpanel" aria-labelledby="gt1-tab">
-                                    <!--div class="group__bottom--head group__bottom--activity bg-white mb-4 border-0">
-                                        <ul class="nav nav-tabs" id="myTab2" role="tablist">
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link active" id="Personal-tab" data-bs-toggle="tab" data-bs-target="#Personal" type="button" role="tab" aria-controls="Personal" aria-selected="true">Personal</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="Mentions-tab" data-bs-toggle="tab" data-bs-target="#Mentions" type="button" role="tab" aria-controls="Mentions" aria-selected="false">Mentions</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="Favorites-tab" data-bs-toggle="tab" data-bs-target="#Favorites" type="button" role="tab" aria-controls="Favorites" aria-selected="false">Favorites</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="Friends-tab" data-bs-toggle="tab" data-bs-target="#Friends" type="button" role="tab" aria-controls="Friends" aria-selected="false">Friends</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="Groups-tab" data-bs-toggle="tab" data-bs-target="#Groups" type="button" role="tab" aria-controls="Groups" aria-selected="false">Groups</button>
-                                            </li>
-                                        </ul>
-                                    </div-->
-
                                     <div class="group__bottom--area group__bottom--memberactivity">
                                         <div class="group__bottom--body">
                                             <div class="group__bottom--allmedia">
@@ -386,7 +366,7 @@
                                                     <li>
                                                         <p class="info-name">Рост</p>
                                                         <p class="info-details">
-                                                            <input type="text" name="weight" class="my-form-control" placeholder="Вес" {% if height %}value="{{ height }}"{% endif %}>
+                                                            <input type="text" name="weight" class="my-form-control" placeholder="Рост" {% if height %}value="{{ height }}"{% endif %}>
                                                         </p>
                                                     </li>
                                                     <li>
@@ -1761,7 +1741,7 @@
                             <div class="story__item style2">
                                 <div class="story__inner">
                                     <div class="story__thumb position-relative">
-                                        <img src="{% static "assets/images/member/profile/profile.jpg" %}" alt="dating thumb">
+                                        <img src="{% if avatar %}{{avatar.url}}{% else %}{% static "assets/images/member/profile/profile.jpg" %}{% endif %}" alt="dating thumb">
                                     </div>
                                     <div class="story__content px-0 pb-0">
                                         <h4>{{name}}</h4>

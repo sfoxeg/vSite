@@ -12,6 +12,7 @@ def profile(request) -> HttpResponse:
 
     context = {
         "cities": city_list(City),
+        "avatar": userprofile.avatar,
         "name": f'{userprofile.first_name} {userprofile.last_name}',
         "sex": request.user.sex,
         "height": userprofile.height,
