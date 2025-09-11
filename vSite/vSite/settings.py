@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'main',
     'user',
+    'search',
 ]
 
 MIDDLEWARE = [
