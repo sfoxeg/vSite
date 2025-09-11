@@ -30,6 +30,10 @@ class Command(BaseCommand):
             last_name = fake.last_name_male()
         userprofile.first_name = first_name
         userprofile.last_name = last_name
+        image_bytes_jpeg = fake.image(size=(640, 640), image_format='jpeg')
+        with open(f"static/users_images/{first_name}-{last_name}.jpg", "wb") as f:
+            f.write(image_bytes_jpeg)
+        userprofile.avatar = f"static/users_images/{first_name}-{last_name}.jpg"
         userprofile.user.save()
         userprofile.save()
         return f'{first_name} {last_name}..ok'
