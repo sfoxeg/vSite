@@ -9,13 +9,13 @@
             <div class="col-lg-7 ">
                 <div class="log-reg-inner">
                     <div class="main-thumb mb-5">
-                        <img src="assets/images/404.png" alt="datting thumb">
+                        <img src="{% static "assets/images/404.png" %}" alt="404">
                     </div>
                     <div class="main-content inloginp">
                         <div class="text-content text-center">
-                            <h2>Ops! This Page Not Pound</h2>
-                            <p>We are Really Sorry But the Page you Requested is Missing :( </p>
-                            <a href="index.html" class="default-btn reverse"><span>Back to Home</span></a>
+                            <h2>Хм... Что-то не так</h2>
+                            <p>Нам очень жаль, но запрошенная вами страница отсутствует :( </p>
+                            <a href="{% url "main:index" %}" class="default-btn reverse"><span>Назад</span></a>
                         </div>
                     </div>
                 </div>
