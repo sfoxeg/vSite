@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from user.models import UserProfile
 from main.models import City
-from utils.city_list import city_list
+from utils import cities
 
 
 @login_required
@@ -11,7 +11,7 @@ def profile(request) -> HttpResponse:
     userprofile = UserProfile.objects.get(user=request.user)
 
     context = {
-        "cities": city_list(City),
+        "cities": cities,
         "avatar": userprofile.avatar,
         "name": f'{userprofile.first_name} {userprofile.last_name}',
         "sex": request.user.sex,

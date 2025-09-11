@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from utils.nav_vars import name, names, cities
+from utils import name, names, cities
 
 @login_required
 def search(request) -> HttpResponse:

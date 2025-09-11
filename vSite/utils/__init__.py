@@ -1,0 +1,1 @@
+from .nav_vars import name, names, cities

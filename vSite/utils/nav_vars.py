@@ -1,11 +1,19 @@
 from user.models import UserProfile
 from main.models import City
-from utils.city_list import city_list
+
+
+def city_list(obj):
+    city_list = []
+    city = obj.objects.all()
+    for _ in city:
+        city_list.append({_.id: _.name})
+    return city_list
 
 
 def name(request):
     userprofile = UserProfile.objects.get(user=request.user)
     return f'{userprofile.first_name} {userprofile.last_name}'
+
 
 names = []
 for usr in UserProfile.objects.order_by('-id')[:10]:
