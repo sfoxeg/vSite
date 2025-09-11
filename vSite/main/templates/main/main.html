@@ -17,7 +17,7 @@
                                 <p>Здесь ты сможешь найти себе и постоянного напарника, и компанию на длительный скальный выезд, а может и найти нечто большее</p>
                             </div>
                         </div>
-                        <!--div class="about__bottom">
+                        <div class="about__bottom">
                             <div class="about__bottom--head">
                                 <h5>Latest Registered Members</h5>
                                 <div class="about__bottom--navi">
@@ -28,55 +28,20 @@
                             <div class="about__bottom--body">
                                 <div class="ragi__slider overflow-hidden">
                                     <div class="swiper-wrapper">
+                                        {% for name in names %}
                                         <div class="swiper-slide">
                                             <div class="ragi__thumb">
                                                 <a href="member-single.html"><img src="{% static "assets/images/ragi/01.jpg" %}" alt="dating thumb"></a>
                                             </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="ragi__thumb">
-                                                <a href="member-single.html"><img src="{% static "assets/images/ragi/02.jpg" %}" alt="dating thumb"></a>
+                                            <div>
+                                                <p>{{name}}</p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="ragi__thumb">
-                                                <a href="member-single.html"><img src="{% static "assets/images/ragi/03.jpg" %}" alt="dating thumb"></a>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="ragi__thumb">
-                                                <a href="member-single.html"><img src="{% static "assets/images/ragi/04.jpg" %}" alt="dating thumb"></a>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="ragi__thumb">
-                                                <a href="member-single.html"><img src="{% static "assets/images/ragi/05.jpg" %}" alt="dating thumb"></a>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="ragi__thumb">
-                                                <a href="member-single.html"><img src="{% static "assets/images/ragi/01.jpg" %}" alt="dating thumb"></a>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="ragi__thumb">
-                                                <a href="member-single.html"><img src="{% static "assets/images/ragi/02.jpg" %}" alt="dating thumb"></a>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="ragi__thumb">
-                                                <a href="member-single.html"><img src="{% static "assets/images/ragi/03.jpg" %}" alt="dating thumb"></a>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="ragi__thumb">
-                                                <a href="member-single.html"><img src="{% static "assets/images/ragi/04.jpg" %}" alt="dating thumb"></a>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
-                        </div-->
+                        </div>
                     </div>
                 </div>
                 <div class="col">

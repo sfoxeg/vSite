@@ -2,6 +2,7 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
 from django.contrib.auth.models import UserManager, PermissionsMixin
 from django.utils import timezone
+from datetime import datetime
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -18,6 +19,22 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['sex']
+
+    def age(self):
+        today = datetime.now().date()
+        age = today.year - self.date_of_birth.year - (
+                    (today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
+        # Не забываем о днях рождения, приходящихся на високосный день каждые четыре года!
+        if self.date_of_birth.month == 2 and self.date_of_birth.day == 29:
+            try:
+                leap_year_birthday = self.date_of_birth.replace(year=today.year)
+            except ValueError:
+                # Если в этом году нет 29 февраля, празднование происходит 28 февраля
+                leap_year_birthday = self.date_of_birth.replace(year=today.year, day=28)
+
+            if today < leap_year_birthday:
+                age -= 1  # Отмечаем эту дату заново, время для празднования ещё не пришло!
+        return age
 
     class Meta:
         db_table = "users"
