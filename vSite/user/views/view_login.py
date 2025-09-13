@@ -1,25 +1,13 @@
-from django.contrib import auth
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
-from django.urls import reverse
-
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
 from user.forms import UserLoginForm
 
 
-def login(request) -> HttpResponse:
-    if request.method == 'POST':
-        form = UserLoginForm(data=request.POST)
-        if form.is_valid():
-            username = request.POST['username']
-            password = request.POST['password']
-            user = auth.authenticate(username=username, password=password)
-            if user:
-                auth.login(request, user)
-                return HttpResponseRedirect(reverse('user:profile'))
-    else:
-        form = UserLoginForm()
+class UserLoginView(LoginView):
+    template_name = 'user/login.html'
+    form_class = UserLoginForm
+    success_url = reverse_lazy('user:profile')
 
-    context = {
-        'form': form
-    }
-    return render(request, 'user/login.html', context)
+    def get_context_data(self, **kwargs):
+        cotext = super().get_context_data(**kwargs)
+        return cotext

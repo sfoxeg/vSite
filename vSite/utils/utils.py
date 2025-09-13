@@ -11,8 +11,10 @@ def city_list(obj):
 
 
 def name(request):
-    userprofile = UserProfile.objects.get(user=request.user)
-    return f'{userprofile.first_name} {userprofile.last_name}'
+    if request.user.is_authenticated:
+        userprofile = UserProfile.objects.get(user=request.user)
+        return f'{userprofile.first_name} {userprofile.last_name}'
+    return 'None'
 
 
 names = []

@@ -1,20 +1,13 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
-from django.urls import reverse
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 from user.forms import UserRegistrationForm
 
 
-def register(request) -> HttpResponse:
-    if request.method == 'POST':
-        print(request.POST)
-        form = UserRegistrationForm(data=request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('user:login'))
-    else:
-        form = UserRegistrationForm()
+class UserRegistrationView(CreateView):
+    template_name = 'user/registration.html'
+    form_class = UserRegistrationForm
+    success_url = reverse_lazy('user:login')
 
-    context = {
-        'form': form
-    }
-    return render(request, 'user/register.html', context)
+    def get_context_data(self, **kwargs):
+        cotext = super().get_context_data(**kwargs)
+        return cotext
