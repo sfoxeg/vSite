@@ -23,7 +23,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __age(self):
         today = datetime.now().date()
         age = today.year - self.date_of_birth.year - (
-                    (today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
+                (today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
         # Не забываем о днях рождения, приходящихся на високосный день каждые четыре года!
         if self.date_of_birth.month == 2 and self.date_of_birth.day == 29:
             try:
