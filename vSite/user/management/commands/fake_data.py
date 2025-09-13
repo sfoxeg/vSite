@@ -10,7 +10,7 @@ class Command(BaseCommand):
         parser.add_argument('-c', '--count', type=int, help=u'Количество создаваемых пользователей')
 
     def create_user(self):
-        fake = Faker()
+        fake = Faker('ru_RU')
 
         user = User()
         userprofile = UserProfile(user=user)
