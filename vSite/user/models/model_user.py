@@ -20,7 +20,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['sex']
 
-    def age(self):
+    def __age(self):
         today = datetime.now().date()
         age = today.year - self.date_of_birth.year - (
                     (today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
@@ -35,6 +35,8 @@ class User(AbstractBaseUser, PermissionsMixin):
             if today < leap_year_birthday:
                 age -= 1  # Отмечаем эту дату заново, время для празднования ещё не пришло!
         return age
+
+    age = __age
 
     class Meta:
         db_table = "users"

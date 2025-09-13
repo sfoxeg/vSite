@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from utils.nav_vars import name, names, cities
+from utils import name, names, cities
 
 
 def index(request) -> HttpResponse:

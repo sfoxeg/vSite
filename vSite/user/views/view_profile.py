@@ -17,7 +17,7 @@ def profile(request) -> HttpResponse:
         "sex": request.user.sex,
         "height": userprofile.height,
         "weight": userprofile.weight,
-        "age": request.user.age(),
+        "age": request.user.age,
         "date_of_birth": request.user.date_of_birth,
         "city": userprofile.city.id,
         "description": userprofile.description
