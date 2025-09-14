@@ -32,7 +32,7 @@ DEBUG = os.environ.get('DEBUG')
 if DEBUG:
     pass
 else:
-    DEBUG = False
+    DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -139,7 +139,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'user.User'
 
-LOGIN_URL = '/user/login/'
+LOGIN_URL = '/user/login'
 LOGIN_REDIRECT_URL = '/'
 
 AUTHENTICATION_BACKENDS = [
