@@ -472,33 +472,34 @@
                         </div>
                     </div>
                     {% endfor %}
-
-
 				</div>
+                {% if profiles %}
 				<div class="member__pagination mt-4">
 					<div class="member__pagination--left">
-						<p>Viewing 1 - 20 of 12,345 Members</p>
+						<p>Viewing {{ page_obj.number }} - {{ page_obj.paginator.num_pages }} of {{ page_obj.paginator.count }} Members</p>
 					</div>
 					<div class="member__pagination--right">
 						<ul class="default-pagination">
+                            {% if page_obj.has_previous %}
                             <li>
-                                <a href="#"><i class="fas fa-chevron-left"></i></a>
+                                <a href="?page={{page_obj.previous_page_number}}"><i class="fas fa-chevron-left"></i></a>
                             </li>
+                            {% endif %}
+                            {% for page in page_obj.paginator.page_range %}
+                            {% if page >= page_obj.number|add:-1 and page <= page_obj.number|add:1 %}
                             <li>
-                                <a href="#">01</a>
+                                <a href="?page={{ page }}"{% if page_obj.number == page %} class="active"{% endif %}>{{ page }}</a>
                             </li>
+                            {% endif %}
+                            {% endfor %}
+                             {% if page_obj.has_next %}
                             <li>
-                                <a href="#" class="active">02</a>
-                            </li>
-                            <li>
-                                <a href="#">03</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fas fa-chevron-right"></i></a>
-                            </li>
+                                <a href="?page={{page_obj.next_page_number}}"><i class="fas fa-chevron-right"></i></a>
+                            </li>{% endif %}
                         </ul>
 					</div>
 				</div>
+                {% endif %}
 			</div>
 		</div>
 	</div>
