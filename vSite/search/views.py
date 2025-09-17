@@ -1,7 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from user.models.model_user_profile import UserProfile
-from utils import name, names, cities
 
 
 class SearchView(LoginRequiredMixin, ListView):
@@ -12,8 +11,5 @@ class SearchView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         cotext = super().get_context_data(**kwargs)
-        cotext["name"] = name(self.request)
-        cotext["city"] = cities
-        cotext["names"] = names
         cotext["age"] = range(18, 80)
         return cotext

@@ -5,15 +5,20 @@ from main.models import City
 
 
 class UserProfile(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='Пользователь')
-    acting = models.BooleanField(default=False, null=False, verbose_name='Поиск разрешен')
-    first_name = models.CharField(max_length=32, verbose_name='Имя')
-    last_name = models.CharField(max_length=32, verbose_name='Фамилия')
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='profiles', verbose_name='Пользователь')
+    acting = models.BooleanField(default=False, blank=False, null=False, verbose_name='Поиск разрешен')
+    first_name = models.CharField(max_length=32, blank=False, verbose_name='Имя')
+    last_name = models.CharField(max_length=32, blank=False, verbose_name='Фамилия')
     description = models.TextField(blank=True, verbose_name='О себе')
     city = models.ForeignKey(to=City, null=True, on_delete=models.CASCADE, verbose_name='Город')
-    height = models.PositiveIntegerField(null=False, verbose_name='Рост')
-    weight = models.PositiveIntegerField(null=False, verbose_name='Вес')
+    height = models.PositiveIntegerField(null=True, blank=True, verbose_name='Рост')
+    weight = models.PositiveIntegerField(null=True, blank=True, verbose_name='Вес')
     avatar = models.ImageField(upload_to="static/users_images", blank=True, null=True, verbose_name='Аватар')
+
+    def __name(self):
+        return f'{self.first_name} {self.last_name}'
+
+    name = __name
 
     class Meta:
         db_table = "profiles"

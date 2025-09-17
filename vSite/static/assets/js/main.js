@@ -329,4 +329,13 @@
         });
     });
 
+    $('#acting').on('click', function (e) {
+    this.value = this.checked ? 'True' : 'False';
+    if (this.value) {
+        this.prop('checked', true);
+        } else {
+        this.prop('checked', false);
+        }
+    });
+
 }(jQuery));
