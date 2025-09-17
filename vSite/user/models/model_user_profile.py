@@ -1,7 +1,7 @@
 from django.db import models
 
 from user.models import User
-from main.models import City
+from search.models import City
 
 
 class UserProfile(models.Model):

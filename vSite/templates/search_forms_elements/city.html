@@ -1,0 +1,3 @@
+<select id="city" name="city">{% for c in cities %}{% for id, name in c.items %}
+    <option value="{{id}}">{{name}}</option>{% endfor %}{% endfor %}
+</select>

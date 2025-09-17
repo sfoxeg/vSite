@@ -49,29 +49,19 @@
                         <div class="about__title">
                             <h3>Продам гараж</h3>
                         </div>
-                        <form action="#">
+                        <form action="{% url "search:search" %}" method="get">
                             <div class="banner__list">
                                 <div class="row">
                                     <div class="col-6">
                                         <label>Город</label>
                                         <div class="banner__inputlist">
-                                            <select id="country" name="country">
-                                                {% for c in city %}
-                                                    {% for id, name in c.items %}
-                                                <option value="{{id}}">{{name}}</option>
-                                                    {% endfor %}
-                                                {% endfor %}
-                                            </select>
+                                            {% include "search_forms_elements/city.html" %}
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <label>Ищу</label>
+                                        <label>Мне интересны</label>
                                         <div class="banner__inputlist">
-                                            <select>
-                                                <option selected>да кому ты нужен</option>
-                                                <option value="male">малтщега</option>
-                                                <option value="female">девощку</option>
-                                            </select>
+                                            {% include "search_forms_elements/looking_for.html" %}
                                         </div>
                                     </div>
                                 </div>
@@ -83,22 +73,12 @@
                                         <div class="row g-3">
                                             <div class="col-6">
                                                 <div class="banner__inputlist">
-                                                    <select>
-                                                        <option value="18" selected>18</option>
-                                                        {% for c in age %}
-                                                        <option value="{{c}}">{{c}}</option>
-                                                        {% endfor %}
-                                                    </select>
+                                                    {% include "search_forms_elements/age_min.html" %}
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="banner__inputlist">
-                                                    <select>
-                                                        {% for c in age %}
-                                                        <option value="{{c}}">{{c}}</option>
-                                                        {% endfor %}
-                                                        <option value="80" selected>80</option>
-                                                    </select>
+                                                    {% include "search_forms_elements/age_max.html" %}
                                                 </div>
                                             </div>
                                         </div>

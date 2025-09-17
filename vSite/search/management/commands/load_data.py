@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 import json
-from main.models import City
+from search.models import City
 
 
 class Command(BaseCommand):

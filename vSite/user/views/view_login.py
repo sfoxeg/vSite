@@ -9,5 +9,5 @@ class UserLoginView(LoginView):
     success_url = reverse_lazy('user:profile')
 
     def get_context_data(self, **kwargs):
-        cotext = super().get_context_data(**kwargs)
-        return cotext
+        context = super().get_context_data(**kwargs)
+        return context

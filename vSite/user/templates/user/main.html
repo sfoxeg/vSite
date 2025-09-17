@@ -1809,27 +1809,13 @@
                                     <h5 class="modal-title" id="exampleModalLabel">Filter your search</h5>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="#">
+                                    <form action="{% url "search:search" %}" method="get">
                                         <div class="banner__list">
                                             <div class="row align-items-center row-cols-1">
                                                 <div class="col">
-                                                    <label>Я</label>
+                                                    <label>Мне интересны</label>
                                                     <div class="banner__inputlist">
-                                                        <select>
-                                                            <option selected>с писькой</option>
-                                                             <option value="male">наружу</option>
-                                                             <option value="female">унутрь</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <label>Ищу</label>
-                                                    <div class="banner__inputlist">
-                                                        <select>
-                                                            <option selected>да кому ты нужен</option>
-                                                            <option value="male">малтщега</option>
-                                                            <option value="female">девощку</option>
-                                                        </select>
+                                                        {% include "search_forms_elements/looking_for.html" %}
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -1837,60 +1823,12 @@
                                                     <div class="row g-3">
                                                         <div class="col-6">
                                                             <div class="banner__inputlist">
-                                                                <select>
-                                                                    <option value="18" selected>18</option>
-                                                                    <option value="19">19</option>
-                                                                    <option value="20">20</option>
-                                                                    <option value="21">21</option>
-                                                                    <option value="22">22</option>
-                                                                    <option value="23">23</option>
-                                                                    <option value="24">24</option>
-                                                                    <option value="25">25</option>
-                                                                    <option value="26">26</option>
-                                                                    <option value="27">27</option>
-                                                                    <option value="28">28</option>
-                                                                    <option value="29">29</option>
-                                                                    <option value="30">30</option>
-                                                                    <option value="31">31</option>
-                                                                    <option value="32">32</option>
-                                                                    <option value="33">33</option>
-                                                                    <option value="34">34</option>
-                                                                    <option value="35">35</option>
-                                                                    <option value="36">36</option>
-                                                                    <option value="37">37</option>
-                                                                    <option value="38">38</option>
-                                                                    <option value="39">39</option>
-                                                                    <option value="40">40</option>
-                                                                </select>
+                                                                {% include "search_forms_elements/age_min.html" %}
                                                             </div>
                                                         </div>
                                                         <div class="col-6">
                                                             <div class="banner__inputlist">
-                                                                <select>
-                                                                    <option value="18">18</option>
-                                                                    <option value="19">19</option>
-                                                                    <option value="20">20</option>
-                                                                    <option value="21">21</option>
-                                                                    <option value="22">22</option>
-                                                                    <option value="23">23</option>
-                                                                    <option value="24">24</option>
-                                                                    <option value="25" selected>25</option>
-                                                                    <option value="26">26</option>
-                                                                    <option value="27">27</option>
-                                                                    <option value="28">28</option>
-                                                                    <option value="29">29</option>
-                                                                    <option value="30">30</option>
-                                                                    <option value="31">31</option>
-                                                                    <option value="32">32</option>
-                                                                    <option value="33">33</option>
-                                                                    <option value="34">34</option>
-                                                                    <option value="35">35</option>
-                                                                    <option value="36">36</option>
-                                                                    <option value="37">37</option>
-                                                                    <option value="38">38</option>
-                                                                    <option value="39">39</option>
-                                                                    <option value="40">40</option>
-                                                                </select>
+                                                                {% include "search_forms_elements/age_max.html" %}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1898,13 +1836,7 @@
                                                 <div class="col">
                                                     <label>Город</label>
                                                     <div class="banner__inputlist">
-                                                        <select id="city" name="city">
-                                                            {% for c in cities %}
-                                                                {% for id, name in c.items %}
-                                                             <option value="{{id}}">{{name}}</option>
-                                                                {% endfor %}
-                                                            {% endfor %}
-                                                        </select>
+                                                        {% include "search_forms_elements/city.html" %}
                                                     </div>
                                                 </div>
                                                 <div class="col">

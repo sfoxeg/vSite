@@ -1,5 +1,5 @@
 from django import forms
-from main.models import City
+from search.models import City
 from user.models import UserProfile
 
 
