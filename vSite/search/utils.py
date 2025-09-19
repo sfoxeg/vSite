@@ -17,12 +17,12 @@ def get_or_session(obj: object, arg_name: str) -> str:
     return obj.request.session.get(arg_name, '')
 
 
-def city_list(obj):
-    city_list = []
+def city_list(obj: object) -> list:
+    __city_list = []
     city = obj.objects.all()
     for _ in city:
-        city_list.append({_.id: _.name})
-    return city_list
+        __city_list.append({_.id: _.name})
+    return __city_list
 
 
 cities = city_list(City)
