@@ -3,7 +3,6 @@ from django.views.generic import ListView
 from django.urls import reverse_lazy
 from user.models.model_user_profile import UserProfile
 from search.utils import cities, get_or_session, date
-from search.forms import SearchProfileForm
 
 
 class SearchView(LoginRequiredMixin, ListView):
