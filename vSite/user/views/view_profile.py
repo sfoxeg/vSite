@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic import UpdateView
 from user.forms import UserProfileForm
-from search.utils import cities
+from search.utils import cities, get_or_session
 from user.models import UserProfile
 
 
@@ -25,6 +25,11 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["looking_for"] = get_or_session(self, 'looking_for')
+        context["age_min"] = get_or_session(self, 'age_min')
+        context["age_max"] = get_or_session(self, 'age_max')
+        context["city"] = get_or_session(self, 'city')
+        context["order"] = get_or_session(self, 'order')
         context["cities"] = cities
-        context["age"] = range(18, 80)
+        context["age"] = range(18, 81)
         return context

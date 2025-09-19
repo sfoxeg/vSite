@@ -30,15 +30,14 @@
 								</div>
 							</div>
 							<div class="col">
-								<label>Country</label>
+								<label>Город</label>
 								<div class="banner__inputlist">
                                     {% include "search_forms_elements/city.html" %}
 								</div>
 							</div>
 							<div class="col">
-                                {% csrf_token %}
-                                {{form.errors}}
-								<button type="submit" class="default-btn reverse d-block"><span>Find Your Partner</span></button>
+                                <input type="text" name="form" value="form" hidden>
+								<button type="submit" class="default-btn reverse d-block"><span>Поиск</span></button>
 							</div>
 						</div>
 					</div>
@@ -59,20 +58,15 @@
 						<div class="member__info--filter">
 							<div class="default-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>Filter Your Search <i class="fa-solid fa-sliders"></i></span></div>
 						</div>
-						<div class="member__info--count">
-							<div class="default-btn"><span>All Members</span></div>
-							<p>20365587</p>
-						</div>
 					</div>
 					<div class="member__info--right">
 						<div class="member__info--customselect right w-100">
-							<div class="default-btn"><span>Order By:</span></div>
+							<div class="default-btn"><span>Сортировать:</span></div>
 							<div class="banner__inputlist">
 								<select>
-									<option value="0">Last Active </option>
-									<option value="1">Oldest</option>
-									<option value="2">Popular</option>
-									<option value="3">Most Active</option>
+									<option value="last_active">Активность</option>
+									<option value="youngest">Возраст &#8593;</option>
+									<option value="oldest">Возраст &#8595;</option>
 								</select>
 							</div>
 						</div>
@@ -119,7 +113,7 @@
                             {% endfor %}
                              {% if page_obj.has_next %}
                             <li>
-                                <a href="?page={{page_obj.next_page_number}}"><i class="fas fa-chevron-right"></i></a>
+                                <a href="?page={{page_obj.next_page_number}} {{request.GET.age_min}}"><i class="fas fa-chevron-right"></i></a>
                             </li>{% endif %}
                         </ul>
 					</div>
