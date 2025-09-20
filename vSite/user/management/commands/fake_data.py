@@ -13,9 +13,9 @@ class Command(BaseCommand):
 
     def create_user(self):
         fake = Faker('ru_RU')
-        userprofile = UserProfile(user=User(), climbing=Climbing())
+        userprofile = UserProfile(user=User())
         userprofile.goal = random.randrange(1, 4)
-        userprofile.city = random.randrange(1, len(CITIES)+1)
+        userprofile.city = random.randrange(1, len(CITIES) + 1)
         userprofile.user.email = fake.email()
         userprofile.user.set_password(fake.password())
         userprofile.user.date_of_birth = fake.date_of_birth()
@@ -31,9 +31,11 @@ class Command(BaseCommand):
         with open(f"static/users_images/{first_name}-{last_name}.jpg", "wb") as f:
             f.write(image_bytes_jpeg)
         userprofile.avatar = f"static/users_images/{first_name}-{last_name}.jpg"
-        userprofile.climbing.save()
         userprofile.user.save()
         userprofile.save()
+        userprofile.climbing.bouldering = 2
+        userprofile.climbing = Climbing.objects.get(profile=userprofile)
+        userprofile.climbing.save()
         return f'{first_name} {last_name}..ok'
 
     def handle(self, *args, **options):

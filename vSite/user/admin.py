@@ -2,7 +2,14 @@ from django.contrib import admin
 from user.models import User, UserProfile, Climbing
 
 
-class UserProfileDocAdmin(admin.TabularInline):
+class UserClimbingDocAdmin(admin.StackedInline):
+    model = Climbing
+    fields = list_display = ['difficulty', 'where_difficulty', 'bouldering', 'where_bouldering', 'faster', 'alpinism',
+                             'belay_up', 'belay_down', 'belay_description']
+    extra = 0
+
+
+class UserProfileDocAdmin(admin.StackedInline):
     model = UserProfile
     fields = list_display = ['goal', 'first_name', 'last_name', 'description', 'city', 'height', 'weight', 'avatar']
     extra = 0
@@ -10,19 +17,21 @@ class UserProfileDocAdmin(admin.TabularInline):
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['email', 'profile__first_name', 'profile__last_name','is_active', 'sex', 'age', 'date_of_birth']
+    list_display = ['email', 'profile__first_name', 'profile__last_name', 'is_active', 'sex', 'age', 'date_of_birth']
     list_filter = ['is_active', 'sex', 'is_superuser']
     inlines = [UserProfileDocAdmin]
 
+
 @admin.register(Climbing)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['id',]
-    # list_filter = ['is_active', 'sex', 'is_superuser']
+    list_display = ['profile__first_name', 'profile__last_name', ]
+
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name', 'goal', 'user__sex', 'city']
+    list_display = ['name', 'goal', 'city', 'height', 'weight']
     list_filter = ['goal', 'city', 'height', 'weight']
+    inlines = [UserClimbingDocAdmin]
 
-    # def age(self, obj):
-    #     return str(obj.user.age)
+    def name(self, obj):
+        return f'{obj.first_name} {obj.last_name}'

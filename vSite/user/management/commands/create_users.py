@@ -1,12 +1,12 @@
 from django.core.management.base import BaseCommand
-from user.models import User, UserProfile, Climbing
+from user.models import User, UserProfile
 
 
 class Command(BaseCommand):
     help = u'Создание тестовых пользователей'
 
     def create_user(self, email, password, sex, first_name, last_name):
-        profile = UserProfile(user=User(), climbing=Climbing())
+        profile = UserProfile(user=User())
         profile.user.email = email
         profile.user.set_password(password)
         profile.user.sex = sex
@@ -18,8 +18,9 @@ class Command(BaseCommand):
         profile.last_name = last_name
         profile.goal = 3
         profile.user.save()
-        profile.climbing.save()
         profile.save()
+        profile.climbing.belay_description = 'test'
+        profile.climbing.save()
         return f'{email}..ok'
 
     def handle(self, *args, **options):

@@ -1,4 +1,7 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from user.models import UserProfile
 
 
 class Climbing(models.Model):
@@ -22,6 +25,7 @@ class Climbing(models.Model):
         (2, 'Я за любой движ'),
     )
 
+    profile = models.OneToOneField(to=UserProfile, on_delete=models.CASCADE, related_name='climbing')
     difficulty = models.IntegerField(choices=CATEGORY, default=0, verbose_name='Сложность')
     where_difficulty = models.IntegerField(choices=WHERE, default=0, verbose_name="Где лазаю сложность")
     bouldering = models.IntegerField(choices=CATEGORY, default=0, verbose_name='Боулдеринг')
@@ -39,3 +43,14 @@ class Climbing(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+
+@receiver(post_save, sender=UserProfile)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Climbing.objects.create(profile=instance)
+
+
+@receiver(post_save, sender=UserProfile)
+def save_user_profile(sender, instance, **kwargs):
+    instance.climbing.save()

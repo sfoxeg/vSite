@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from user.models import User, Climbing
+from user.models import User
 from utils import CITIES
 
 
@@ -13,7 +13,6 @@ class UserProfile(models.Model):
         (3, 'За любой кипиш'),
     )
     user = models.OneToOneField(to=User, on_delete=models.CASCADE, related_name='profile', primary_key=True, verbose_name='Пользователь')
-    climbing = models.OneToOneField(Climbing, on_delete=models.CASCADE, related_name='profile')
     goal = models.IntegerField(choices=GOAL, default=0, verbose_name='Цель поиска')
     first_name = models.CharField(max_length=32, blank=False, verbose_name='Имя')
     last_name = models.CharField(max_length=32, blank=False, verbose_name='Фамилия')
@@ -40,10 +39,9 @@ class UserProfile(models.Model):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        UserProfile.objects.create(user=instance, climbing=Climbing.objects.create())
+        UserProfile.objects.create(user=instance)
 
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.profile.climbing.save()
     instance.profile.save()
