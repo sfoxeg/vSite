@@ -10,4 +10,5 @@ class UserRegistrationView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["title"] = 'Регистрация'
         return context
