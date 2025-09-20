@@ -1,5 +1,5 @@
 from django.contrib import admin
-from user.models import User, UserProfile
+from user.models import User, UserProfile, Climbing
 
 
 class UserProfileDocAdmin(admin.TabularInline):
@@ -10,10 +10,14 @@ class UserProfileDocAdmin(admin.TabularInline):
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['email', 'is_active', 'sex', 'age', 'date_of_birth']
+    list_display = ['email', 'profile__first_name', 'profile__last_name','is_active', 'sex', 'age', 'date_of_birth']
     list_filter = ['is_active', 'sex', 'is_superuser']
     inlines = [UserProfileDocAdmin]
 
+@admin.register(Climbing)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['id',]
+    # list_filter = ['is_active', 'sex', 'is_superuser']
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):

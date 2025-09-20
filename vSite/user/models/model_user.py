@@ -6,9 +6,13 @@ from datetime import datetime
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    SEX = (
+        (False, 'Мужчина'),
+        (True, 'Женщина')
+    )
     username = None
     email = models.EmailField(max_length=255, unique=True, verbose_name='email address')
-    sex = models.BooleanField(default=False, verbose_name='Пол')
+    sex = models.BooleanField(choices=SEX, default=False, verbose_name='Пол')
     date_of_birth = models.DateField(default=False, verbose_name='Дата рождения')
     is_active = models.BooleanField(default=True, verbose_name='Активный')
     is_staff = models.BooleanField(default=False, verbose_name='Админ')

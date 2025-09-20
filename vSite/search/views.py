@@ -32,7 +32,7 @@ class SearchView(LoginRequiredMixin, ListView):
             profiles = (profiles
                         .filter(user__is_active=True)
                         .filter(goal=goal)
-                        .filter(city__id=city)
+                        .filter(city=city)
                         .filter(user__date_of_birth__range=(date(age_max), date(age_min)))
                         .order_by(order))
 

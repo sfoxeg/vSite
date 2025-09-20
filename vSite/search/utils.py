@@ -1,6 +1,6 @@
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-from search.models import City
+from utils import CITIES
 
 
 def date(date_of_birth: str) -> str:
@@ -17,12 +17,11 @@ def get_or_session(obj: object, arg_name: str) -> str:
     return obj.request.session.get(arg_name, '')
 
 
-def city_list(obj: object) -> list:
+def city_list(c) -> list:
     __city_list = []
-    city = obj.objects.all()
-    for _ in city:
-        __city_list.append({_.id: _.name})
+    for _ in c:
+        __city_list.append({_[0]: _[1]})
     return __city_list
 
 
-cities = city_list(City)
+cities = city_list(CITIES)

@@ -11,7 +11,7 @@ class UserIdView(LoginRequiredMixin, DetailView):
     context_object_name = 'profile'
 
     def get_object(self, queryset=None):
-        return UserProfile.objects.get(id=self.kwargs.get(self.slug_url_kwarg))
+        return UserProfile.objects.get(user_id=self.kwargs.get(self.slug_url_kwarg))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
