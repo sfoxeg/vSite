@@ -17,8 +17,7 @@
                                                     <li>
                                                         <p class="info-name">Поиск</p>
                                                         <p class="info-details">
-                                                            <input type="checkbox" class="my-form-control" id="acting" name="acting" {% if form.acting.value == True %}value="True" checked{% else %}value="False"{% endif %}>
-                                                            {% if form.acting.errors %}<div class="warning">{{ form.acting.errors }}</div>{% endif %}
+                                                            {{ form.goal }}
                                                         </p>
                                                     </li>
                                                 </ul>

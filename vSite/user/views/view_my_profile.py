@@ -29,6 +29,7 @@ class UserProfileView(LoginRequiredMixin, UpdateView):
         context["title"] = self.object.name
         context["profile_type"] = 'my'
         context["looking_for"] = get_or_session(self, 'looking_for')
+        context["goal"] = get_or_session(self, 'goal')
         context["age_min"] = get_or_session(self, 'age_min')
         context["age_max"] = get_or_session(self, 'age_max')
         context["city"] = get_or_session(self, 'city')

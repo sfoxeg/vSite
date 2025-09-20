@@ -4,7 +4,7 @@ from user.models import User, UserProfile
 
 class UserProfileDocAdmin(admin.TabularInline):
     model = UserProfile
-    fields = list_display = ['acting', 'first_name', 'last_name', 'description', 'city', 'height', 'weight', 'avatar']
+    fields = list_display = ['goal', 'first_name', 'last_name', 'description', 'city', 'height', 'weight', 'avatar']
     extra = 0
 
 
@@ -17,8 +17,8 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name', 'acting', 'user__sex', 'city']
-    list_filter = ['acting', 'city', 'height', 'weight']
+    list_display = ['first_name', 'last_name', 'goal', 'user__sex', 'city']
+    list_filter = ['goal', 'city', 'height', 'weight']
 
     # def age(self, obj):
     #     return str(obj.user.age)

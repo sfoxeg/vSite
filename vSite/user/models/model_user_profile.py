@@ -1,12 +1,18 @@
 from django.db import models
-
 from user.models import User
 from search.models import City
 
 
 class UserProfile(models.Model):
+    GOAL = (
+        (0, 'Не в поиске'),
+        (1, 'Вместе полазать'),
+        (2, 'Больше, чем полазать'),
+        (3, 'За любой кипиш'),
+    )
+
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='profiles', verbose_name='Пользователь')
-    acting = models.BooleanField(default=False, blank=False, null=False, verbose_name='Поиск разрешен')
+    goal = models.IntegerField(choices=GOAL, default=0, verbose_name='Цель поиска')
     first_name = models.CharField(max_length=32, blank=False, verbose_name='Имя')
     last_name = models.CharField(max_length=32, blank=False, verbose_name='Фамилия')
     description = models.TextField(blank=True, verbose_name='О себе')

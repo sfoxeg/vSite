@@ -14,6 +14,7 @@ class SearchView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         looking_for = get_or_session(self, 'looking_for')
+        goal = get_or_session(self, 'goal')
         age_min = get_or_session(self, 'age_min')
         age_max = get_or_session(self, 'age_max')
         city = get_or_session(self, 'city')
@@ -30,7 +31,8 @@ class SearchView(LoginRequiredMixin, ListView):
             profiles = super().get_queryset()
             profiles = (profiles
                         .filter(user__is_active=True)
-                        .filter(acting=False).filter(city__id=city)
+                        .filter(goal=goal)
+                        .filter(city__id=city)
                         .filter(user__date_of_birth__range=(date(age_max), date(age_min)))
                         .order_by(order))
 
@@ -46,6 +48,7 @@ class SearchView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context["title"] = 'Поиск'
         context["looking_for"] = get_or_session(self, 'looking_for')
+        context["goal"] = get_or_session(self, 'goal')
         context["age_min"] = get_or_session(self, 'age_min')
         context["age_max"] = get_or_session(self, 'age_max')
         context["city"] = get_or_session(self, 'city')

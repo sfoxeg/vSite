@@ -50,15 +50,15 @@
                             <div class="banner__list">
                                 <div class="row">
                                     <div class="col-6">
-                                        <label>Город</label>
-                                        <div class="banner__inputlist">
-                                            {% include "search_forms_elements/city.html" %}
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
                                         <label>Мне интересны</label>
                                         <div class="banner__inputlist">
                                             {% include "search_forms_elements/looking_for.html" %}
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Цель</label>
+                                        <div class="banner__inputlist">
+                                            {% include "search_forms_elements/goal.html" %}
                                         </div>
                                     </div>
                                 </div>
@@ -81,6 +81,10 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-12">
+                                        <label>Город</label>
+                                        <div class="banner__inputlist">
+                                            {% include "search_forms_elements/city.html" %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
