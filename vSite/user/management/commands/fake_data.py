@@ -33,12 +33,16 @@ class Command(BaseCommand):
         userprofile.avatar = f"static/users_images/{first_name}-{last_name}.jpg"
         userprofile.user.save()
         userprofile.save()
-        userprofile.climbing.bouldering = 2
         userprofile.climbing = Climbing.objects.get(profile=userprofile)
+        userprofile.climbing.bouldering = random.randrange(0, 12)
+        userprofile.climbing.leading = random.randrange(0, 12)
+        userprofile.climbing.where_bouldering = random.randrange(0, 3)
+        userprofile.climbing.where_leading = random.randrange(0, 3)
+        userprofile.climbing.belay = random.randrange(0, 3)
         userprofile.climbing.save()
         return f'{first_name} {last_name}..ok'
 
     def handle(self, *args, **options):
         count = int(options['count'])
         for _ in range(0, count):
-            print(self.create_user())
+            print(f'{_} {self.create_user()}')

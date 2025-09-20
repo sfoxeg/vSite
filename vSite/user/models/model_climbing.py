@@ -5,7 +5,7 @@ from user.models import UserProfile
 
 
 class Climbing(models.Model):
-    CATEGORY = (
+    __CATEGORY = (
         (0, 'Нет'),
         (1, '5'),
         (2, '6a/a+'),
@@ -19,21 +19,23 @@ class Climbing(models.Model):
         (10, '8c/c+'),
         (11, '9 и выше'),
     )
-    WHERE = (
+    __WHERE = (
         (0, 'скалы/камни'),
         (1, 'фанера'),
         (2, 'Я за любой движ'),
     )
-
+    __BELAY = (
+        (0, "Нет"),
+        (1, "Верхняя"),
+        (2, "Нижняя и верхняя"),
+    )
     profile = models.OneToOneField(to=UserProfile, on_delete=models.CASCADE, related_name='climbing')
-    difficulty = models.IntegerField(choices=CATEGORY, default=0, verbose_name='Сложность')
-    where_difficulty = models.IntegerField(choices=WHERE, default=0, verbose_name="Где лазаю сложность")
-    bouldering = models.IntegerField(choices=CATEGORY, default=0, verbose_name='Боулдеринг')
-    where_bouldering = models.IntegerField(choices=WHERE, default=0, verbose_name="Где лазаю боулдеринг")
-    faster = models.BooleanField(default=False, verbose_name='Скорость')
+    leading = models.IntegerField(choices=__CATEGORY, default=0, verbose_name='Трудность')
+    where_leading = models.IntegerField(choices=__WHERE, default=0, verbose_name="Где лазаю трудность")
+    bouldering = models.IntegerField(choices=__CATEGORY, default=0, verbose_name='Боулдеринг')
+    where_bouldering = models.IntegerField(choices=__WHERE, default=0, verbose_name="Где лазаю боулдеринг")
     alpinism = models.BooleanField(default=False, verbose_name='Альпинизм')
-    belay_up = models.BooleanField(default=False, verbose_name='Верхняя страховка')
-    belay_down = models.BooleanField(default=False, verbose_name='Нижняя страховка')
+    belay = models.IntegerField(choices=__BELAY, default=0, verbose_name='Верхняя страховка')
     belay_description = models.TextField(blank=True, verbose_name='Примечание о страховке')
 
     class Meta:

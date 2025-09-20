@@ -4,8 +4,8 @@ from user.models import User, UserProfile, Climbing
 
 class UserClimbingDocAdmin(admin.StackedInline):
     model = Climbing
-    fields = list_display = ['difficulty', 'where_difficulty', 'bouldering', 'where_bouldering', 'faster', 'alpinism',
-                             'belay_up', 'belay_down', 'belay_description']
+    fields = list_display = ['leading', 'where_leading', 'bouldering', 'where_bouldering', 'alpinism', 'belay',
+                             'belay_description']
     extra = 0
 
 
@@ -24,7 +24,8 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(Climbing)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['profile__first_name', 'profile__last_name', ]
+    list_display = ['profile__first_name', 'profile__last_name', 'leading', 'where_leading', 'bouldering',
+                    'where_bouldering', 'alpinism', 'belay', 'belay_description']
 
 
 @admin.register(UserProfile)
@@ -33,5 +34,5 @@ class UserProfileAdmin(admin.ModelAdmin):
     list_filter = ['goal', 'city', 'height', 'weight']
     inlines = [UserClimbingDocAdmin]
 
-    def name(self, obj):
-        return f'{obj.first_name} {obj.last_name}'
+    # def name(self, obj):
+    #     return f'{obj.first_name} {obj.last_name}'
