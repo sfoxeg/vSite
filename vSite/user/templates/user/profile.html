@@ -1,4 +1,98 @@
-{% extends "user/main.html" %}
-{% load static %}
-{% block userpage %}
-{% endblock %}
+<div class="tab-pane fade{% if profile_type %}show active{% endif %}" id="gt1" role="tabpanel" aria-labelledby="gt1-tab">
+                                    <div class="info">
+                                        <div class="info-card mb-4">
+                                            <div class="info-card-title">
+                                                <h6>Основная информация</h6>
+                                            </div>
+                                            <div class="info-card-content">
+                                                <ul class="info-list">
+                                                    <li>
+                                                        <p class="info-name">Пол</p>
+                                                        <p class="info-details">{% if profile.user.sex %}Женщина{% else %}Мужчина{% endif %}</p>
+                                                    </li>
+                                                    <li>
+                                                        <p class="info-name">Возраст</p>
+                                                        <p class="info-details">{{profile.user.age}}</p>
+                                                    </li>
+                                                    <li>
+                                                        <p class="info-name">Дата рождения</p>
+                                                        <p class="info-details">{{profile.user.date_of_birth}}</p>
+                                                    </li>
+                                                    <li>
+                                                        <p class="info-name">Город</p>
+                                                        <p class="info-details">{{ profile.city.name }}</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="info-card  mb-4">
+                                            <div class="info-card-title">
+                                                <h6>Физические данные</h6>
+                                            </div>
+                                            <div class="info-card-content">
+                                                <ul class="info-list">
+                                                    <li>
+                                                        <p class="info-name">Рост</p>
+                                                        <p class="info-details">{{ profile.height }}</p>
+                                                    </li>
+                                                    <li>
+                                                        <p class="info-name">Вес</p>
+                                                        <p class="info-details">{{ profile.weight }}</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="info-card mb-4">
+                                            <div class="info-card-title">
+                                                <h6>Looking For</h6>
+                                            </div>
+                                            <div class="info-card-content">
+                                                <ul class="info-list">
+                                                    <li>
+                                                        <p class="info-name">I'm looking for</p>
+                                                        <p class="info-details">I want a funny person</p>
+                                                    </li>
+                                                    <li>
+                                                        <p class="info-name">Whatever I like</p>
+                                                        <p class="info-details">I like to travel a lot</p>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="info-card mb-4">
+                                            <div class="info-card-title">
+                                                <h6>Lifestyle</h6>
+                                            </div>
+                                            <div class="info-card-content">
+                                                <ul class="info-list">
+                                                    <li>
+                                                        <p class="info-name">Interest</p>
+                                                        <p class="info-details">Dogs,Cats</p>
+                                                    </li>
+                                                    <li>
+                                                        <p class="info-name">Favorite vocations</p>
+                                                        <p class="info-details">Maldives, Bangladesh</p>
+                                                    </li>
+                                                    <li>
+                                                        <p class="info-name">Looking for</p>
+                                                        <p class="info-details">Serious Relationshiop,Affair</p>
+                                                    </li>
+                                                    <li>
+                                                        <p class="info-name">Smoking</p>
+                                                        <p class="info-details">Casual Smoker</p>
+                                                    </li>
+                                                    <li>
+                                                        <p class="info-name">Language</p>
+                                                        <p class="info-details">English, French, Italian</p>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>

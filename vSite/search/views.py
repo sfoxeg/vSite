@@ -44,6 +44,7 @@ class SearchView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["title"] = 'Поиск'
         context["looking_for"] = get_or_session(self, 'looking_for')
         context["age_min"] = get_or_session(self, 'age_min')
         context["age_max"] = get_or_session(self, 'age_max')

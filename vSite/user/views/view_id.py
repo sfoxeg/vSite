@@ -1,33 +1,22 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
-from django.contrib import messages
-from django.views.generic import UpdateView
+from django.views.generic import DetailView
 from user.forms import UserProfileForm
 from search.utils import cities, get_or_session
 from user.models import UserProfile
 
 
-class UserProfileView(LoginRequiredMixin, UpdateView):
+class UserIdView(LoginRequiredMixin, DetailView):
     template_name = 'user/main.html'
-    form_class = UserProfileForm
-    success_url = reverse_lazy('user:profile')
+    slug_url_kwarg = 'profile_id'
     context_object_name = 'profile'
 
     def get_object(self, queryset=None):
-        return UserProfile.objects.get(user=self.request.user)
-
-    def form_valid(self, form):
-        messages.success(self.request, "Профиль изменен")
-        return super().form_valid(form)
-
-    def form_invalid(self, form):
-        messages.warning(self.request, "Что-то пошло не так")
-        return super().form_invalid(form)
+        return UserProfile.objects.get(id=self.kwargs.get(self.slug_url_kwarg))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = self.object.name
-        context["profile_type"] = 'my'
+        context["profile_type"] = 'id'
         context["looking_for"] = get_or_session(self, 'looking_for')
         context["age_min"] = get_or_session(self, 'age_min')
         context["age_max"] = get_or_session(self, 'age_max')

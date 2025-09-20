@@ -79,11 +79,11 @@
                         <div class="story__item style2 story--theme-color">
                             <div class="story__inner">
                                 <div class="story__thumb position-relative">
-                                    <a href="group-single.html"><img src="{%if profile.avatar %}{{ profile.avatar.url }}{% else %}{% endif %}" alt="dating thumb"></a>
+                                    <a href="{% url "user:id" profile.id %}"><img src="{%if profile.avatar %}{{ profile.avatar.url }}{% else %}{% endif %}" alt="dating thumb"></a>
                                     <span class="member__activity member__activity--ofline">2 days ago</span>
                                 </div>
                                 <div class="story__content px-0 pb-0">
-                                    <a href="group-single.html"><h4>{{profile.name}}, {{profile.user.age}}</h4></a>
+                                    <a href="{% url "user:id" profile.id %}"><h4>{{profile.name}}, {{profile.user.age}}</h4></a>
                                     <p>{{profile.description}}</p>
 
                                 </div>
@@ -95,7 +95,7 @@
                 {% if profiles %}
 				<div class="member__pagination mt-4">
 					<div class="member__pagination--left">
-						<p>Viewing {{ page_obj.number }} - {{ page_obj.paginator.num_pages }} of {{ page_obj.paginator.count }} Members</p>
+						<p>Найдено {{ page_obj.paginator.count }}. Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</p>
 					</div>
 					<div class="member__pagination--right">
 						<ul class="default-pagination">
