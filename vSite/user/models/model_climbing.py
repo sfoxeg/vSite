@@ -34,6 +34,7 @@ class Climbing(models.Model):
     where_leading = models.IntegerField(choices=__WHERE, default=0, verbose_name="Где лазаю трудность")
     bouldering = models.IntegerField(choices=__CATEGORY, default=0, verbose_name='Боулдеринг')
     where_bouldering = models.IntegerField(choices=__WHERE, default=0, verbose_name="Где лазаю боулдеринг")
+    speed = models.BooleanField(default=False, verbose_name='Скорость')
     alpinism = models.BooleanField(default=False, verbose_name='Альпинизм')
     belay = models.IntegerField(choices=__BELAY, default=0, verbose_name='Верхняя страховка')
     belay_description = models.TextField(blank=True, verbose_name='Примечание о страховке')

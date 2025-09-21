@@ -43,7 +43,98 @@
 							</div>
 							<div class="col">
                                 <input type="text" name="form" value="form" hidden>
-								<button type="submit" class="default-btn reverse d-block"><span>Поиск</span></button>
+                                <button type="submit" class="default-btn reverse d-block"><span>Поиск</span></button>
+							</div>
+						</div>
+
+                        <hr>
+
+                        <div class="row align-items-center row-cols-xl-5 row-cols-lg-3 row-cols-sm-2 row-cols-1">
+							<div class="col-6">
+								<div class="banner__inputlist">
+									<select id="leading" name="leading">
+                                        <option value="0"{% if leading|add:0 == 0 %} selected{% endif %}>Трудность</option>
+                                        <option value="1"{% if leading|add:0 == 1 %} selected{% endif %}>5</option>
+                                        <option value="2"{% if leading|add:0 == 2 %} selected{% endif %}>6a/a+</option>
+                                        <option value="3"{% if leading|add:0 == 3 %} selected{% endif %}>6b/b+</option>
+                                        <option value="4"{% if leading|add:0 == 4 %} selected{% endif %}>6c/c+</option>
+                                        <option value="5"{% if leading|add:0 == 5 %} selected{% endif %}>7a/a+</option>
+                                        <option value="6"{% if leading|add:0 == 6 %} selected{% endif %}>7b/b</option>
+                                        <option value="7"{% if leading|add:0 == 7 %} selected{% endif %}>7c/c+</option>
+                                        <option value="8"{% if leading|add:0 == 8 %} selected{% endif %}>8a/a+</option>
+                                        <option value="9"{% if leading|add:0 == 9 %} selected{% endif %}>8b/b</option>
+                                        <option value="10"{% if leading|add:0 == 10 %} selected{% endif %}>8c/c+</option>
+                                        <option value="11"{% if leading|add:0 == 11 %} selected{% endif %}>9 и выше</option>
+                                    </select>
+								</div>
+							</div>
+                            <div class="col-6 where_leading" style="visibility: {% if leading|add:0 > 0 %}visible{% else %}hidden{% endif %}">
+								<div class="banner__inputlist">
+                                    <select id="where_leading" name="where_leading">
+                                        <option value="0" {% if where_leading|add:0 == 0 %} selected{% endif %}>скалы/камни</option>
+                                        <option value="1" {% if where_leading|add:0 == 1 %} selected{% endif %}>фанера</option>
+                                        <option value="2" {% if where_leading|add:0 == 2 %} selected{% endif %}>Я за любой движ</option>
+                                    </select>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="banner__inputlist">
+									<select id="bouldering" name="bouldering">
+                                        <option value="0">Боулдеринг</option>
+                                        <option value="1"{% if bouldering|add:0 == 1 %} selected{% endif %}>5</option>
+                                        <option value="2"{% if bouldering|add:0 == 2 %} selected{% endif %}>6a/a+</option>
+                                        <option value="3"{% if bouldering|add:0 == 3 %} selected{% endif %}>6b/b+</option>
+                                        <option value="4"{% if bouldering|add:0 == 4 %} selected{% endif %}>6c/c+</option>
+                                        <option value="5"{% if bouldering|add:0 == 5 %} selected{% endif %}>7a/a+</option>
+                                        <option value="6"{% if bouldering|add:0 == 6 %} selected{% endif %}>7b/b</option>
+                                        <option value="7"{% if bouldering|add:0 == 7 %} selected{% endif %}>7c/c+</option>
+                                        <option value="8"{% if bouldering|add:0 == 8 %} selected{% endif %}>8a/a+</option>
+                                        <option value="9"{% if bouldering|add:0 == 9 %} selected{% endif %}>8b/b</option>
+                                        <option value="10"{% if bouldering|add:0 == 10 %} selected{% endif %}>8c/c+</option>
+                                        <option value="11"{% if bouldering|add:0 == 11 %} selected{% endif %}>9 и выше</option>
+                                    </select>
+								</div>
+							</div>
+							<div class="col-6 where_bouldering" style="visibility: {% if bouldering|add:0 > 0 %}visible{% else %}hidden{% endif %}">
+								<div class="banner__inputlist">
+                                    <select id="where_bouldering" name="where_bouldering">
+                                        <option value="0" {% if where_bouldering|add:0 == 0 %} selected{% endif %}>скалы/камни</option>
+                                        <option value="1" {% if where_bouldering|add:0 == 1 %} selected{% endif %}>фанера</option>
+                                        <option value="2" {% if where_bouldering|add:0 == 2 %} selected{% endif %}>Я за любой движ</option>
+                                    </select>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="banner__inputlist">
+									<select id="belay" name="belay">
+                                        <option value="0" {% if belay|add:0 == 0 %} selected{% endif %}>Страховка</option>
+                                        <option value="1" {% if belay|add:0 == 1 %} selected{% endif %}>Верхняя</option>
+                                        <option value="2" {% if belay|add:0 == 2 %} selected{% endif %}>Нижняя и верхняя</option>
+                                    </select>
+								</div>
+							</div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row align-items-center row-cols-xl-5 row-cols-lg-3 row-cols-sm-2 row-cols-1">
+                            <div class="col">
+                                <div class="row g-5">
+                                    <div class="col-6">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" name="speed_cb" id="speed_cb" {% if speed == "True" %}checked{% endif %} switch>
+                                            <input type="hidden" name="speed" id="speed" value="{% if speed == "True" %}True{% else %}False{% endif %}">
+                                            <label class="form-check-label" for="speed_cb">Скорость</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" name="alpinism_cb" id="alpinism_cb" {% if alpinism == "True" %}checked{% endif %} switch>
+                                            <input type="hidden" name="alpinism" id="alpinism" value="{% if alpinism == "True" %}True{% else %}False{% endif %}">
+                                            <label class="form-check-label" for="alpinism_cb">Альпинизм</label>
+                                        </div>
+                                    </div>
+                                </div>
 							</div>
 						</div>
 					</div>
@@ -59,11 +150,14 @@
 	<div class="member story story--style2 padding-top padding-bottom overflow-hidden">
 		<div class="container">
 			<div class="section__wrapper">
+                {% if profiles %}
 				<div class="member__info mb-4">
 					<div class="member__info--left">
+                        {% comment %}
 						<div class="member__info--filter">
 							<div class="default-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>Filter Your Search <i class="fa-solid fa-sliders"></i></span></div>
 						</div>
+                        {% endcomment %}
 					</div>
 					<div class="member__info--right">
 						<div class="member__info--customselect right w-100">
@@ -78,6 +172,7 @@
 						</div>
 					</div>
                 </div>
+                {% endif %}
 				<div class="row g-4 justify-content-center row-cols-lg-4 row-cols-sm-2 row-cols-1">
 
                     {% for profile in profiles %}
@@ -129,56 +224,4 @@
 		</div>
 	</div>
     <!-- ================> Member section end here <================== -->
-
-
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Filter your search</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form action="{% url "search:search" %}" method="post">
-						<div class="banner__list">
-							<div class="row align-items-center row-cols-1">
-								<div class="col">
-									<label>Мне интересны</label>
-									<div class="banner__inputlist">
-                                        {% include "search_forms_elements/looking_for.html" %}
-									</div>
-								</div>
-								<div class="col">
-									<label>Возраст</label>
-									<div class="row g-3">
-										<div class="col-6">
-											<div class="banner__inputlist">
-												{% include "search_forms_elements/age_min.html" %}
-											</div>
-										</div>
-										<div class="col-6">
-											<div class="banner__inputlist">
-												{% include "search_forms_elements/age_max.html" %}
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col">
-									<label>Country</label>
-									<div class="banner__inputlist">
-										{% include "search_forms_elements/city.html" %}
-									</div>
-								</div>
-								<div class="col">
-									<button type="submit" class="default-btn reverse d-block"><span>Find Your Partner</span></button>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- modal -->
 {% endblock %}

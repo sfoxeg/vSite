@@ -329,13 +329,20 @@
         });
     });
 
-    $('#acting').on('click', function (e) {
-    this.value = this.checked ? 'True' : 'False';
-    if (this.value) {
-        this.prop('checked', true);
-        } else {
-        this.prop('checked', false);
-        }
+    $('#leading').on('change', function (e) {
+        this.value > 0 ? $('.where_leading').css('visibility', 'visible') : $('.where_leading').css('visibility', 'hidden')
+    });
+
+    $('#bouldering').on('change', function (e) {
+        this.value > 0 ? $('.where_bouldering').css('visibility', 'visible') : $('.where_bouldering').css('visibility', 'hidden')
+    });
+
+    $('#speed_cb').on('click', function (e) {
+        this.checked ? $('#speed').val('True') : $('#speed').val('False')
+    });
+
+    $('#alpinism_cb').on('click', function (e) {
+        this.checked ? $('#alpinism').val('True') : $('#alpinism').val('False')
     });
 
 }(jQuery));
