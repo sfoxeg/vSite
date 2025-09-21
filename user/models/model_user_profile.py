@@ -6,14 +6,14 @@ from utils import CITIES
 
 
 class UserProfile(models.Model):
-    GOAL = (
+    __GOAL = (
         (0, 'Не в поиске'),
         (1, 'Вместе полазать'),
         (2, 'Больше, чем полазать'),
         (3, 'За любой кипиш'),
     )
     user = models.OneToOneField(to=User, on_delete=models.CASCADE, related_name='profile', primary_key=True, verbose_name='Пользователь')
-    goal = models.IntegerField(choices=GOAL, default=0, verbose_name='Цель поиска')
+    goal = models.IntegerField(choices=__GOAL, default=0, verbose_name='Цель поиска')
     first_name = models.CharField(max_length=32, blank=False, verbose_name='Имя')
     last_name = models.CharField(max_length=32, blank=False, verbose_name='Фамилия')
     description = models.TextField(blank=True, verbose_name='О себе')
