@@ -76,11 +76,6 @@
             });
         });
 
-        // button effict
-        // document.querySelectorAll('.default-btn').forEach(button => button.innerHTML = '<div><span>' + button.textContent.trim().split('').join('</span><span>')  +  '</span></div>');
-
-
-
         //Member Filter Isotop
         // init Isotope
         var $grid = $('.member__grid').isotope({
@@ -113,10 +108,6 @@
                 $(this).addClass('is-checked');
             });
         });
-
-
-        
-
     });
     
     //Banner slider
@@ -176,105 +167,6 @@
         }
     });
 
-
-    // post thumb slider
-    var swiper = new Swiper('.blog__slider', {
-        slidesPerView: 1,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        navigation: {
-            nextEl: '.thumb-next',
-            prevEl: '.thumb-prev',
-        },
-        loop: true,
-    });
-
-
-    // product view mode change js
-    $(function() {
-        $('.product-view-mode').on('click', 'a', function (e) {
-            e.preventDefault();
-            var shopProductWrap = $('.shop-product-wrap');
-            var viewMode = $(this).data('target');
-            $('.product-view-mode a').removeClass('active');
-            $(this).addClass('active');
-            shopProductWrap.removeClass('grid list').addClass(viewMode);
-        });
-    });
-
-    // model option start here
-    $(function() {
-        $('.view-modal').on('click', function () {
-            $('.modal').addClass('show');
-        });
-        $('.close').on('click', function () {
-            $('.modal').removeClass('show');
-        });
-    });
-
-    // shop cart + - start here
-    var CartPlusMinus = $('.cart-plus-minus');
-    $(".qtybutton").on("click", function() {
-        var $button = $(this);
-        var oldValue = $button.parent().find("input").val();
-        if ($button.text() === "+") {
-            var newVal = parseFloat(oldValue) + 1;
-        } else {
-            if (oldValue > 0) {
-                var newVal = parseFloat(oldValue) - 1;
-            } else {
-                newVal = 1;
-            }
-        }
-        $button.parent().find("input").val(newVal);
-    });
-
-    // shop sidebar menu
-    $(".shop-menu>li>ul").parent("li").addClass("catmenu-item-has-children");
-    $('.shop-menu li a').on('click', function (e) {
-        var element = $(this).parent('li');
-        if (element.hasClass('open')) {
-            element.removeClass('open');
-            element.find('li').removeClass('open');
-            element.find('ul').slideUp(300, "swing");
-        } else {
-            element.addClass('open');
-            element.children('ul').slideDown(300, "swing");
-            element.siblings('li').children('ul').slideUp(300, "swing");
-            element.siblings('li').removeClass('open');
-            element.siblings('li').find('li').removeClass('open');
-            element.siblings('li').find('ul').slideUp(300, "swing");
-        }
-    })
-
-    // product single thumb slider
-    $(function() {
-        var galleryThumbs = new Swiper('.pro-single-thumbs', {
-            spaceBetween: 10,
-            slidesPerView: 3,
-            loop: true,
-            freeMode: true,
-            loopedSlides: 1,
-            watchSlidesVisibility: true,
-            watchSlidesProgress: true,
-            navigation: {
-                nextEl: '.pro-single-next',
-                prevEl: '.pro-single-prev',
-            },
-        });
-        var galleryTop = new Swiper('.pro-single-top', {
-            spaceBetween: 10,
-            loop:true,
-            loopedSlides: 1,
-            thumbs: {
-                swiper: galleryThumbs,
-            },
-        });
-    });
-
-
     //Review Tabs
     $('ul.review-nav').on('click', 'li', function (e) {
         e.preventDefault();
@@ -296,38 +188,7 @@
 
 
     new WOW().init();
-    
 
-
-    //contact form js
-    $(function () {
-        var form = $('#contact-form');
-        var formMessages = $('.form-message');
-        $(form).submit(function (e) {
-            e.preventDefault();
-            var formData = $(form).serialize();
-            $.ajax({
-                type: 'POST',
-                url: $(form).attr('action'),
-                data: formData
-            })
-            .done(function (response) {
-                $(formMessages).removeClass('error');
-                $(formMessages).addClass('success');
-                $(formMessages).text(response);
-                $('#contact-form input, #contact-form textarea').val('');
-            })
-            .fail(function (data) {
-                $(formMessages).removeClass('success');
-                $(formMessages).addClass('error');
-                if (data.responseText !== '') {
-                    $(formMessages).text(data.responseText);
-                } else {
-                    $(formMessages).text('Oops! An error occured and your message could not be sent.');
-                }
-            });
-        });
-    });
 
     $('#leading').on('change', function (e) {
         this.value > 0 ? $('.where_leading').css('visibility', 'visible') : $('.where_leading').css('visibility', 'hidden')

@@ -3,7 +3,7 @@ from faker import Faker
 from django.core.management.base import BaseCommand
 from user.models import User, UserProfile, Climbing
 from utils import CITIES
-
+import os
 
 class Command(BaseCommand):
     help = u'Создание тестовых пользователей со случайным содержанием полей'
