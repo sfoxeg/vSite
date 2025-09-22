@@ -94,7 +94,7 @@ services:
     networks:
       - vsite
     ports:
-      - 8080:80
+      - 8777:80
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost || exit 1"]
       interval: 10s
