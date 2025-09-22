@@ -13,7 +13,6 @@ RUN apt update -y -q && apt install -y -q --no-install-recommends \
 RUN adduser --disabled-password --no-create-home app
 WORKDIR /app/
 RUN chown -R app:app /app
-USER app
 
 ADD requirements.txt /app/
 
@@ -22,3 +21,5 @@ ENV PYTHONUNBUFFERED 1
 
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip install -U --no-cache-dir -r /app/requirements.txt
+
+USER app
