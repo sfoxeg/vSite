@@ -13,6 +13,7 @@ RUN apt update -y -q && apt install -y -q --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir /app
 RUN mkdir /app/staticfiles
 RUN mkdir /app/mediafiles
 
