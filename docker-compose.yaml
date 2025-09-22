@@ -80,14 +80,28 @@ services:
       timeout: 5s
       retries: 3
     volumes:
-      - "./:/app"
+      - "./:/app:ro"
       - "/tmp:/tmp"
     depends_on:
       builder:
         condition: service_healthy
 
+  nginx:
+    image: nginx:1.29-alpine3.22
+    networks:
+      - vsite
+    ports:
+      - 8080:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro # Mount custom Nginx configuration
+      - static_volume:/app/static
+    depends_on:
+      web:
+        condition: service_healthy
+
 volumes:
   pgdata:
+  static_volume:
 
 networks:
   vsite:
