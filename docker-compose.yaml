@@ -27,7 +27,8 @@ services:
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   web:
     container_name: web
@@ -52,7 +53,8 @@ services:
       - "../../:/app"
       - "/tmp:/tmp"
     depends_on:
-      - builder
+      builder:
+        condition: service_healthy
 
   db:
     container_name: vsite-db
