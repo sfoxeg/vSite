@@ -32,7 +32,6 @@ services:
     volumes:
       - ./:/app
       - ./staticfiles:/app/staticfiles
-      - ./mediafiles:/app/mediafiles
     networks:
       - vsite
     environment:
