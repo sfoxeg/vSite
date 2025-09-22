@@ -147,3 +147,5 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'user.authentication.EmailAuthBackend',
 ]
+
+CSRF_TRUSTED_ORIGINS = ['http://192.168.31.221/']
