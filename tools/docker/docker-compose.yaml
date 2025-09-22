@@ -2,7 +2,7 @@ services:
   builder:
     container_name: "web-builder"
     build:
-      context: ../..
+      context: ../../
       dockerfile: Dockerfile
     image: "web:local"
     entrypoint: [ "sh", "-c", "/app/builder" ]
