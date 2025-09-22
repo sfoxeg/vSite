@@ -64,7 +64,7 @@ services:
     entrypoint: [ "sh", "-c", "gunicorn vSite.wsgi --bind 127.0.0.1:8000" ]
     networks:
       - vsite
-    ports:
+    expose:
       - "8000:8000"
     environment:
       DEBUG: ${DEBUG}
@@ -95,7 +95,7 @@ services:
     networks:
       - vsite
     ports:
-      - 8080:80
+      - 8080:8080
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro # Mount custom Nginx configuration
       - certs:/etc/nginx/certs
