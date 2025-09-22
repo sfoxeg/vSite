@@ -1,7 +1,10 @@
-gunicorn
 django
 django_extensions
 Pillow
 python-dateutil
+
+gunicorn
+psycopg2-binary
+
 
 Faker
