@@ -5,7 +5,8 @@ if [ ! -f /app/db.sqlite3 ]; then
     mkdir static/users_images
     python manage.py fake_data -c 20
 else
-  python manage.py migrate
+    python manage.py collectstatic
+    python manage.py migrate
 fi
 
 touch /tmp/flag
