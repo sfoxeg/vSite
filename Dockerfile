@@ -11,10 +11,9 @@ RUN apt update -y -q && apt install -y -q --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 RUN adduser --disabled-password --no-create-home app
-USER app
-RUN chown -R app:app /app
-
 WORKDIR /app/
+RUN chown -R app:app /app
+USER app
 
 ADD requirements.txt /app/
 
