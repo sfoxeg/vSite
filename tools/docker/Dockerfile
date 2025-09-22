@@ -14,8 +14,8 @@ RUN apt update -y -q && apt install -y -q --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app/
-RUN pwd
-ADD ../../requirements.txt /app/
+
+ADD requirements.txt /app/
 
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip install -U --no-cache-dir -r /app/requirements.txt
