@@ -1,7 +1,6 @@
 FROM python:3.13.2-slim-bullseye
 
 RUN apt update -y -q && apt install -y -q --no-install-recommends \
-    gcc\
     gunicorn \
     sqlite3 \
     postgresql-client-common \
