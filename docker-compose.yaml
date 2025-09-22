@@ -28,7 +28,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: "web:local"
-    command: /app/builder
+    command: chmod +x /app/builder && /app/builder
     volumes:
       - "./:/app"
       - static_volume:/app/staticfiles
