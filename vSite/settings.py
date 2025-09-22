@@ -148,4 +148,4 @@ AUTHENTICATION_BACKENDS = [
     'user.authentication.EmailAuthBackend',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://192.168.31.221/']
+CSRF_TRUSTED_ORIGINS = ['localhost:8080']
