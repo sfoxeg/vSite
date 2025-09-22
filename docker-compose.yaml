@@ -35,9 +35,6 @@ services:
       - ./mediafiles:/app/mediafiles
     networks:
       - vsite
-    init: true # helps with signal forwarding and process reaping
-    tty: true
-    stdin_open: true
     environment:
       DEBUG: ${DEBUG}
       SECRET_KEY: ${SECRET_KEY}
