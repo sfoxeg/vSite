@@ -28,7 +28,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: "web:local"
-    entrypoint: [ "sh", "-c", "/app/builder" ]
+    command: /app/builder
     volumes:
       - "./:/app"
       - static_volume:/app/staticfiles
