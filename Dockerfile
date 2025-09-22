@@ -12,7 +12,8 @@ RUN apt update -y -q && apt install -y -q --no-install-recommends \
 
 RUN adduser --disabled-password --no-create-home app
 WORKDIR /app/
-RUN chown -R app:app /app
+RUN mkdir /app/staticfiles/ && mkdir /app/mediafiles
+RUN chown -R app:app /app && chown -R app:app /app/staticfiles && chown -R app:app /app/staticfiles
 
 ADD requirements.txt /app/
 
