@@ -64,7 +64,7 @@ services:
     entrypoint: [ "sh", "-c", "gunicorn vSite.wsgi --bind 0.0.0.0:8000" ]
     networks:
       - vsite
-    ports:
+    expose:
       - "8000:8000"
     environment:
       DEBUG: ${DEBUG}
