@@ -9,7 +9,7 @@ RUN apt update -y -q && apt install -y -q --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN adduser --disabled-password --no-create-home app
+RUN addgroup -S app && adduser --disabled-password --no-create-home -S app -G app
 WORKDIR /app/
 RUN mkdir /app/staticfiles/ && mkdir /app/mediafiles
 RUN chown -R app:app /app && chown -R app:app /app/staticfiles && chown -R app:app /app/staticfiles
