@@ -1,4 +1,27 @@
 services:
+  db:
+    container_name: vsite-db
+    restart: always
+    image: postgres:17.6-alpine3.22
+    hostname: postgres
+    networks:
+      - vsite
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data/pgdata
+
   builder:
     container_name: "web-builder"
     build:
@@ -50,34 +73,11 @@ services:
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
     volumes:
-      - "../../:/app"
+      - "./:/app"
       - "/tmp:/tmp"
     depends_on:
       builder:
         condition: service_healthy
-
-  db:
-    container_name: vsite-db
-    restart: always
-    image: postgres:17.6-alpine3.22
-    hostname: postgres
-    networks:
-      - vsite
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASS}
-      PGDATA: /var/lib/postgresql/data/pgdata
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}" ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data/pgdata
 
 volumes:
   pgdata:
