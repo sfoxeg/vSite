@@ -31,8 +31,8 @@ services:
     entrypoint: [ "sh", "-c", "chmod +x /app/builder && /app/builder && chmod -x /app/builder" ]
     volumes:
       - "./:/app"
-      - static:/app/staticfiles
-      - media:/app/mediafiles
+      - ./static:/app/staticfiles
+      - ./media:/app/mediafiles
     networks:
       - vsite
     init: true # helps with signal forwarding and process reaping
@@ -82,8 +82,8 @@ services:
       start_period: 10s
     volumes:
       - "./:/app:ro"
-      - static:/app/staticfiles
-      - media:/app/mediafiles
+      - ./static:/app/staticfiles
+      - ./media:/app/mediafiles
     depends_on:
       builder:
         condition: service_healthy
@@ -107,7 +107,7 @@ services:
       - ./certs:/etc/nginx/certs
       - ./html:/usr/share/nginx/html
       - ./static:/app/staticfiles
-      - ./media_volume:/app/mediafiles
+      - ./media:/app/mediafiles
     depends_on:
       web:
         condition: service_healthy
