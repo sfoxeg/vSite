@@ -26,6 +26,8 @@ services:
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
+    depends_on:
+      - db
 
   web:
     container_name: web
@@ -50,9 +52,9 @@ services:
       - ".:/app"
       - "/tmp:/tmp"
     depends_on:
-      - vsite-db
+      - builder
 
-  vsite-db:
+  db:
     container_name: vsite-db
     restart: always
     image: postgres:17.6-alpine3.22
