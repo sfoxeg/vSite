@@ -23,7 +23,7 @@ services:
       - ./pgdata:/var/lib/postgresql/data/pgdata
 
   builder:
-    container_name: "web-builder"
+    container_name: vsite-web-builder
     build:
       context: .
       dockerfile: Dockerfile
@@ -54,7 +54,7 @@ services:
         condition: service_healthy
 
   web:
-    container_name: web
+    container_name: vsite-web
     image: "web:local"
     hostname: web
     restart: always
