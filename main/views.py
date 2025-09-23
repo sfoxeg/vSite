@@ -7,7 +7,6 @@ class IndexView(TemplateView):
     template_name = 'main/main.html'
 
     def get_context_data(self, **kwargs):
-        print(DEBUG)
         context = super().get_context_data(**kwargs)
         context["looking_for"] = get_or_session(self, 'looking_for')
         context["goal"] = get_or_session(self, 'goal')
