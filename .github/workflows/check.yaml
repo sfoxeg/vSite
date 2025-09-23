@@ -1,10 +1,17 @@
 name: Check
 on: push
 jobs:
-  run:
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-      - uses: actions/checkout@3
-      - name: Docker up
-        run: docker-compose up
+        uses: actions/checkout@v5
+
+      - name: Env
+        run: cp tools/example.env .env
+
+      - name: run docker-compose
+        uses: blag/action-docker-compose@latest
+        with:
+            cli-args: "up"
