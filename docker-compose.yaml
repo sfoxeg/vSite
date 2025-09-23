@@ -5,8 +5,8 @@ services:
     image: postgres:17.6-alpine3.22
     hostname: postgres
     networks:
-      - vsite
-    ports:
+      - db
+    expose:
       - "5432:5432"
     environment:
       POSTGRES_DB: ${DB_NAME}
@@ -28,12 +28,12 @@ services:
       context: .
       dockerfile: Dockerfile
     image: "web:local"
-    entrypoint: [ "sh", "-c", "chmod +x /app/builder && /app/builder && chmod -x /app/builder" ]
+    entrypoint: [ "sh", "-c", "chmod +x /app/tools/builder && /app/tools/builder && chmod -x /app/tools/builder" ]
     volumes:
       - ./:/app
       - ./staticfiles:/app/staticfiles
     networks:
-      - vsite
+      - db
     environment:
       DEBUG: ${DEBUG}
       SECRET_KEY: ${SECRET_KEY}
@@ -59,6 +59,7 @@ services:
     stop_signal: SIGINT
     entrypoint: [ "sh", "-c", "gunicorn vSite.wsgi --bind 0.0.0.0:8000" ]
     networks:
+      - db
       - vsite
     expose:
       - "8000:8000"
@@ -115,6 +116,10 @@ volumes:
   certs:
 
 networks:
+  db:
+    name: db
+    driver: bridge
+
   vsite:
     name: vsite
     driver: bridge
