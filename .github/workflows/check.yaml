@@ -6,7 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@4
+        uses: actions/checkout@3
+
+      - name: Env
+        run: cp tools/example.env .env
 
       - name: Docker up
         run: docker-compose up
