@@ -1,6 +1,6 @@
 services:
   db:
-    container_name: vsite-db
+    container_name: db
     restart: always
     image: postgres:17.6-alpine3.22
     hostname: postgres
@@ -23,7 +23,7 @@ services:
       - ./pgdata:/var/lib/postgresql/data/pgdata
 
   builder:
-    container_name: vsite-web-builder
+    container_name: web-builder
     build:
       context: .
       dockerfile: Dockerfile
@@ -52,7 +52,7 @@ services:
         condition: service_healthy
 
   web:
-    container_name: vsite-web
+    container_name: web
     image: "web:local"
     hostname: web
     restart: always
