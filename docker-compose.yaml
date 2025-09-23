@@ -23,7 +23,7 @@ services:
       - ./pgdata:/var/lib/postgresql/data/pgdata
 
   builder:
-    container_name: web-builder
+    container_name: builder
     build:
       context: .
       dockerfile: Dockerfile
