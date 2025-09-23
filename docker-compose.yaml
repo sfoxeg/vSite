@@ -99,7 +99,7 @@ services:
       retries: 5
       start_period: 10s
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro # Mount custom Nginx configuration
+      - ./conf/nginx.conf:/etc/nginx/nginx.conf:ro # Mount custom Nginx configuration
       - ./nginx_log:/var/log/nginx
       - ./staticfiles:/app/staticfiles
       - ./mediafiles:/app/mediafiles
