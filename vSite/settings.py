@@ -29,10 +29,8 @@ else:
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
-if DEBUG:
-    pass
-else:
-    DEBUG = True
+
+DEBUG = False if DEBUG == 'False' else True
 
 ALLOWED_HOSTS = ['*']
 
