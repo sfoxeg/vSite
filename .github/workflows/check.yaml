@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-      - uses: actions/checkout@4
+        uses: actions/checkout@4
 
       - name: Docker up
         run: docker-compose up
