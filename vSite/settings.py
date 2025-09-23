@@ -25,7 +25,33 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
-DEBUG = False if DEBUG == 'False' else True
+if DEBUG != 'False':
+    DEBUG = True
+
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+    MEDIA_URL = '/media/'
+
+    # Database
+    # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DEBUG = False
+    CSRF_TRUSTED_ORIGINS = ['http://climbdate.ru/', 'https://climbdate.ru']
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.2/howto/static-files/
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_DIRS: list[Path] = [BASE_DIR / 'static']
 
 ALLOWED_HOSTS = ['*']
 
@@ -73,16 +99,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'vSite.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -115,17 +131,6 @@ USE_TZ = True
 DATE_INPUT_FORMATS = ['%d.%m.%Y']
 DATE_FORMAT = ['%d.%m.%Y']
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-STATICFILES_DIRS: list[Path] = [BASE_DIR / 'static']
-
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_URL = 'media/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -140,6 +145,3 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'user.authentication.EmailAuthBackend',
 ]
-
-CSRF_TRUSTED_ORIGINS = ['http://climbdate.ru/', 'https://climbdate.ru']
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
