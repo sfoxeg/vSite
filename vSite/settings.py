@@ -141,4 +141,4 @@ AUTHENTICATION_BACKENDS = [
     'user.authentication.EmailAuthBackend',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://mrsega.duckdns.org:8777', 'http://192.168.31.221:8777']
+CSRF_TRUSTED_ORIGINS = ['http://climbdate.ru/', 'https://climbdate.ru']
