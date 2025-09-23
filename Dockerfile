@@ -6,7 +6,7 @@ RUN apt update -y -q && apt install -y -q --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app/
+WORKDIR /app
 
 ADD requirements.txt /app/
 
