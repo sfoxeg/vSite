@@ -28,9 +28,6 @@ DEBUG = os.environ.get('DEBUG')
 if DEBUG != 'False':
     DEBUG = True
 
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
-    MEDIA_URL = '/media/'
-
     # Database
     # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
@@ -42,8 +39,19 @@ if DEBUG != 'False':
     }
 else:
     DEBUG = False
+
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+    MEDIA_URL = '/media/'
+
     CSRF_TRUSTED_ORIGINS = ['http://climbdate.ru/', 'https://climbdate.ru']
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
