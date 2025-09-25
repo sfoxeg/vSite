@@ -1,70 +1,4 @@
 @charset "UTF-8";
-/*!
-Template Name: Ollya
-Template URI: codexcoder.com
-Author: codexcoder.com
-Author URI: codexcoder.com
-Description: Description
-Version: 1.0.0
-Text Domain: Warzone
-Tags: 	chat, community, creative, date, dating, matching, membership, modern, network, profile, relationship, romance, social, social media, social network
-
-*/
-/*--------------------------------------------------------------
->>> TABLE OF CONTENTS:
-----------------------------------------------------------------
-# Normalize
-# Typography
-# Global CSS
-# Header CSS
-	*Style-1
-	*Style-2
-	*Mobile Header
-# Page Header
-# Banner
-	*Style-1
-	*Style-2
-# Main
-    *home + all common section
-# Blog
-	*Style-1
-	*Blog Single
-# Blog Widget
-# Contact Us
-#Footer
---------------------------------------------------------------*/
-/*=====================****===================== */
-/* browser prefix adding  */
-/*=====================****===================== */
-/*=====================****===================== */
-/*Keyframes mixin with vendor prefix*/
-/*=====================****===================== */
-/*=====================****===================== */
-/*=====================****===================== */
-/*=====================****===================== */
-/*Retina ready image */
-/*=====================****===================== */
-/*=====================****===================== */
-/* Arrow with border */
-/*=====================****===================== */
-/*=====================****===================== */
-/*Creating box */
-/* ===== Usage ===== */
-/*=====================****===================== */
-/*=====================****===================== */
-/*backgorund size cover*/
-/* ===== Usage ===== */
-/*=====================****===================== */
-/*=====================****===================== */
-/*Hover effect for no-touch device only. (touch screen device dont have any hover state)*/
-/*=====================****===================== */
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-/* Document
-   ========================================================================== */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- */
 @import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
   line-height: 1.15;
@@ -1570,7 +1504,7 @@ iframe {
   z-index: 999999999;
   width: 100%;
   height: 100%;
-  background: #0F1B33;
+  background: #22272b;
 }
 .preloader .preloader-inner {
   position: absolute;
@@ -1684,7 +1618,7 @@ iframe {
   }
 }
 .header__bottom {
-  padding-block: 16.5px;
+  padding-block: 1px;
 }
 .header.header-fixed .header__top {
   display: none !important;
@@ -6455,6 +6389,11 @@ a[class*=lightcase-icon-] {
   list-style-type: disc;
 }
 
+.logo img {
+    max-width: 80px;
+    height: auto;
+}
+
 .warning{
   color: #f24570;
 }
@@ -6462,4 +6401,3 @@ a[class*=lightcase-icon-] {
 .info{
   color: #618f45;
 }
-/*# sourceMappingURL=style.css.map */
