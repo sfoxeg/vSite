@@ -1,5 +1,1 @@
-<select id="looking_for" name="looking_for">
-    <option value="all"{% if looking_for|default:"all" == "all" %} selected{% endif %}>Все</option>
-    <option value="male"{% if looking_for == "male" %} selected{% endif %}>Парни</option>
-    <option value="female"{% if looking_for == "female" %} selected{% endif %}>Девушки</option>
-</select>
+<select id="looking_for" name="looking_for"><option value="all"{% if looking_for|default:"all" == "all" %} selected{% endif %}>Все</option><option value="male"{% if looking_for == "male" %} selected{% endif %}>Парни</option><option value="female"{% if looking_for == "female" %} selected{% endif %}>Девушки</option></select>

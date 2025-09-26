@@ -1,3 +1,1 @@
-<select id="city" name="city">{% for c in cities %}{% for id, name in c.items %}
-    <option value="{{id}}"{% if city|add:"0"|default:1 == id %} selected{% endif %}>{{name}}</option>{% endfor %}{% endfor %}
-</select>
+<select id="city" name="city">{% for c in cities %}{% for id, name in c.items %}<option value="{{id}}"{% if city|add:"0"|default:1 == id %} selected{% endif %}>{{name}}</option>{% endfor %}{% endfor %}</select>
