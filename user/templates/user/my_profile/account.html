@@ -1,0 +1,49 @@
+                                    <form action="{% url "user:profile" %}" method="post">
+                                        <div class="info">
+                                            {% if messages %}
+                                            <ul class="messages">
+                                            {% for message in messages %}
+                                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                            {% endfor %}
+                                            </ul>
+                                            {% endif %}
+                                            <div class="info-card mb-4">
+                                                <div class="info-card-title">
+                                                    <h6>Сменить пароль</h6>
+                                                </div>
+                                                <div class="info-card-content">
+                                                    <ul class="info-list">
+                                                        <li>
+                                                            <p class="info-name">Текущий пароль</p>
+                                                            <p class="info-details">
+                                                                <input type="password" class="my-form-control" name="first_name" {% if form.first_name.value %}value="{{ form.first_name.value }}"{% endif %}>
+                                                                {% if form.first_name.errors %}<div class="warning">{{ form.first_name.errors }}</div>{% endif %}
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="info-name">Новый пароль</p>
+                                                            <p class="info-details">
+                                                            <input type="password" class="my-form-control" name="last_name" {% if form.last_name.value %}value="{{ form.last_name.value }}"{% endif %}>
+                                                                {% if form.last_name.errors %}<div class="warning">{{ form.last_name.errors }}</div>{% endif %}</p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="info-name">Подтверждение пароля</p>
+                                                            <p class="info-details">
+                                                            <input type="password" class="my-form-control" name="last_name" {% if form.last_name.value %}value="{{ form.last_name.value }}"{% endif %}>
+                                                                {% if form.last_name.errors %}<div class="warning">{{ form.last_name.errors }}</div>{% endif %}</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="">
+                                                <div class="text-center">
+                                                    {{form.errors}}
+                                                    {% csrf_token %}
+                                                    <button class="default-btn reverse" data-toggle="modal">
+                                                        <span>Сохранить</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>

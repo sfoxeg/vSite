@@ -29,7 +29,7 @@
                                 <a href="{% url "search:search" %}">Поиск</a>
                             </li>
                             <li>
-                                <a href="#">{{user.profile.name}}</a>
+                                <a href="#">{% if user.profile.name != ' ' %}{{user.profile.name}}{% else %}Мой профиль{% endif %}</a>
                                 <ul>
                                     <li><a href="{% url "user:profile" %}">Профиль</a></li>
                                     {% if user.is_superuser %}

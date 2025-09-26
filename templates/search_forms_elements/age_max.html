@@ -1,3 +1,1 @@
-<select id="age_max" name="age_max">{% for counter in age %}
-    <option value="{{counter}}"{% if age_max|add:"0"|default:80 == counter %} selected{% endif %}>{{counter}}</option>{% endfor %}
-</select>
+<select id="age_max" name="age_max">{% for counter in age %}<option value="{{counter}}"{% if age_max|add:"0"|default:80 == counter %} selected{% endif %}>{{counter}}</option>{% endfor %}</select>

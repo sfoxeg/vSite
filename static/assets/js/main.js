@@ -4,7 +4,7 @@
         $('.preloader').fadeOut(1000);
     });
 
-    // lightcase 
+    // lightcase
     $('a[data-rel^=lightcase]').lightcase();
 
     $(document).ready(function () {
@@ -109,7 +109,7 @@
             });
         });
     });
-    
+
     //Banner slider
     var swiper = new Swiper('.banner__slider', {
         slidesPerView: 1,
@@ -150,8 +150,8 @@
         },
     });
 
-    
-    //countdown 
+
+    //countdown
     $(window).on('scroll', function () {
         $('.counter').data('countToOptions', {
             formatter: function (value, options) {
@@ -159,7 +159,7 @@
             }
         });
         // start all the timers
-        $('.counter').each(count);  
+        $('.counter').each(count);
         function count(options) {
             var $this = $(this);
             options = $.extend({}, options || {}, $this.data('countToOptions') || {});

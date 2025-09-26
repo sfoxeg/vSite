@@ -1,0 +1,106 @@
+                                    <form action="{% url "user:profile" %}" method="post">
+                                        <div class="info">
+                                            {% if messages %}
+                                            <ul class="messages">
+                                            {% for message in messages %}
+                                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                            {% endfor %}
+                                            </ul>
+                                            {% endif %}
+                                            <div class="info-card  mb-4">
+                                                <div class="info-card-title">
+                                                    <h6>Search info</h6>
+                                                </div>
+                                                <div class="info-card-content">
+                                                    <ul class="info-list">
+                                                        <li>
+                                                            <p class="info-name">Поиск</p>
+                                                            <p class="info-details">
+                                                                {{ form.goal }}
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="info-card mb-4">
+                                                <div class="info-card-title">
+                                                    <h6>Base Info</h6>
+                                                </div>
+                                                <div class="info-card-content">
+                                                    <ul class="info-list">
+                                                        <li>
+                                                            <p class="info-name">Имя</p>
+                                                            <p class="info-details">
+                                                                <input type="text" class="my-form-control" name="first_name" {% if form.first_name.value %}value="{{ form.first_name.value }}"{% endif %} placeholder="Имя">
+                                                                {% if form.first_name.errors %}<div class="warning">{{ form.first_name.errors }}</div>{% endif %}
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="info-name">Фамилия</p>
+                                                            <p class="info-details">
+                                                            <input type="text" class="my-form-control" name="last_name" {% if form.last_name.value %}value="{{ form.last_name.value }}"{% endif %} placeholder="Фамилия">
+                                                                {% if form.last_name.errors %}<div class="warning">{{ form.last_name.errors }}</div>{% endif %}
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="info-name">Пол</p>
+                                                            <p class="info-details">
+                                                                {% if sex %}Женщина{% else %}Мужчина{% endif %}
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="info-name">Рост</p>
+                                                            <p class="info-details">
+                                                                <input type="text" class="my-form-control" name="height" {% if form.height.value %}value="{{ form.height.value }}"{% endif %} placeholder="Рост">
+                                                                {% if form.height.errors %}<div class="warning">{{ form.height.errors }}</div>{% endif %}
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="info-name">Вес</p>
+                                                            <p class="info-details">
+                                                                <input type="text" class="my-form-control" name="weight" {% if form.weight.value %}value="{{ form.weight.value }}"{% endif %} placeholder="Вес">
+                                                                {% if form.weight.errors %}<div class="warning">{{ form.weight.errors }}</div>{% endif %}
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="info-name">Возраст</p>
+                                                            <p class="info-details">
+                                                                {{user.age}}
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="info-name">Дата рождения</p>
+                                                            <p class="info-details">
+                                                                {{user.date_of_birth}}
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <p class="info-name">Город</p>
+                                                            <p class="info-details">
+                                                                {{ form.city }}
+                                                                {% if form.city.errors %}<div class="warning">{{ form.city.errors }}</div>{% endif %}
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="info-card mb-4">
+                                                <div class="info-card-title">
+                                                    <h6>Немного обо мне</h6>
+                                                </div>
+                                                <div class="info-card-content">
+                                                    <textarea name="description">{{form.description.value}}</textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="">
+                                                <div class="text-center">
+                                                    {{form.errors}}
+                                                    {% csrf_token %}
+                                                    <button class="default-btn reverse" data-toggle="modal">
+                                                        <span>Сохранить профиль</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>

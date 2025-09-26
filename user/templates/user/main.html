@@ -36,7 +36,7 @@
                         <div class="group__bottom--left">
                             <div class="tab-content" id="myTabContent">
 
-                                {% if profile_type == 'my' %}{% include "user/my_profile.html" %}{% else %}{% include "user/profile.html" %}{% endif %}
+                                {% if profile_type != 'id' %}{% include "user/my_profile.html" %}{% else %}{% include "user/profile.html" %}{% endif %}
 
                                 {% include "user/feed.html" %}
 

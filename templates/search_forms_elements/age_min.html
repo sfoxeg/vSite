@@ -1,3 +1,1 @@
-<select id="age_min" name="age_min">{% for counter in age %}
-    <option value="{{counter}}"{% if age_min|add:"0"|default:18 == counter %} selected{% endif %}>{{counter}}</option>{% endfor %}
-</select>
+<select id="age_min" name="age_min">{% for counter in age %}<option value="{{counter}}"{% if age_min|add:"0"|default:18 == counter %} selected{% endif %}>{{counter}}</option>{% endfor %}</select>

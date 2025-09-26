@@ -1,184 +1,41 @@
-<div class="tab-pane fade{% if profile_type %}show active{% endif %}" id="gt1" role="tabpanel" aria-labelledby="gt1-tab">
-                                    <form action="{% url "user:profile" %}" method="post">
-                                    <div class="info">
-                                        {% if messages %}
-                                        <ul class="messages">
-                                        {% for message in messages %}
-                                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                        {% endfor %}
+                                <div class="tab-pane fade{% if profile_type %}show active{% endif %}" id="gt1" role="tabpanel" aria-labelledby="gt1-tab">
+                                    <div class="group__bottom--head group__bottom--activity bg-white mb-4 border-0">
+                                        <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <a href="{% url "user:profile" %}" class="nav-link{% if profile_type == 'my' %} active" aria-selected="true"{% else %}" aria-selected="false"{% endif %}>Профиль</a>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <a href="{% url "user:climbing" %}" class="nav-link{% if profile_type == 'climbing' %} active" aria-selected="true"{% else %}" aria-selected="false"{% endif %}>Предпочтения</a>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <a href="{% url "user:account" %}" class="nav-link{% if profile_type == 'account' %} active" aria-selected="true"{% else %}" aria-selected="false"{% endif %}>Аккаунт</a>
+                                            </li>
                                         </ul>
-                                        {% endif %}
-                                        <div class="info-card  mb-4">
-                                            <div class="info-card-title">
-                                                <h6>Search info</h6>
-                                            </div>
-                                            <div class="info-card-content">
-                                                <ul class="info-list">
-                                                    <li>
-                                                        <p class="info-name">Поиск</p>
-                                                        <p class="info-details">
-                                                            {{ form.goal }}
-                                                        </p>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="info-card mb-4">
-                                            <div class="info-card-title">
-                                                <h6>Base Info</h6>
-                                            </div>
-                                            <div class="info-card-content">
-                                                <ul class="info-list">
-                                                    <li>
-                                                        <p class="info-name">Имя</p>
-                                                        <p class="info-details">
-                                                            <input type="text" class="my-form-control" name="first_name" {% if form.first_name.value %}value="{{ form.first_name.value }}"{% endif %} placeholder="Имя">
-                                                            {% if form.first_name.errors %}<div class="warning">{{ form.first_name.errors }}</div>{% endif %}
-                                                        </p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Фамилия</p>
-                                                        <p class="info-details">
-                                                        <input type="text" class="my-form-control" name="last_name" {% if form.last_name.value %}value="{{ form.last_name.value }}"{% endif %} placeholder="Фамилия">
-                                                            {% if form.last_name.errors %}<div class="warning">{{ form.last_name.errors }}</div>{% endif %}</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Пол</p>
-                                                        <p class="info-details">{% if sex %}Женщина{% else %}Мужчина{% endif %}</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Рост</p>
-                                                        <p class="info-details">
-                                                            <input type="text" class="my-form-control" name="height" {% if form.height.value %}value="{{ form.height.value }}"{% endif %} placeholder="Рост">
-                                                            {% if form.height.errors %}<div class="warning">{{ form.height.errors }}</div>{% endif %}</p>
-                                                        </p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Вес</p>
-                                                        <p class="info-details">
-                                                            <input type="text" class="my-form-control" name="weight" {% if form.weight.value %}value="{{ form.weight.value }}"{% endif %} placeholder="Вес">
-                                                            {% if form.weight.errors %}<div class="warning">{{ form.weight.errors }}</div>{% endif %}</p>
-                                                        </p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Возраст</p>
-                                                        <p class="info-details">{{user.age}}</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Дата рождения</p>
-                                                        <p class="info-details">{{user.date_of_birth}}</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Город</p>
-                                                        <p class="info-details">
-                                                            {{ form.city }}
-                                                            {% if form.city.errors %}<div class="warning">{{ form.city.errors }}</div>{% endif %}
-                                                        </p>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="info-card mb-4">
-                                            <div class="info-card-title">
-                                                <h6>Немного обо мне</h6>
-                                            </div>
-                                            <div class="info-card-content">
-                                                <textarea name="description">{{form.description.value}}</textarea>
-                                            </div>
-                                        </div>
+                                    </div>
 
-                                        <div class="info-card mb-4">
-                                            <div class="info-card-title">
-                                                <h6>Looking For</h6>
-                                            </div>
-                                            <div class="info-card-content">
-                                                <ul class="info-list">
-                                                    <li>
-                                                        <p class="info-name">I'm looking for</p>
-                                                        <p class="info-details">I want a funny person</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Whatever I like</p>
-                                                        <p class="info-details">I like to travel a lot</p>
-                                                    </li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="info-card mb-4">
-                                            <div class="info-card-title">
-                                                <h6>Lifestyle</h6>
-                                            </div>
-                                            <div class="info-card-content">
-                                                <ul class="info-list">
-                                                    <li>
-                                                        <p class="info-name">Interest</p>
-                                                        <p class="info-details">Dogs,Cats</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Favorite vocations</p>
-                                                        <p class="info-details">Maldives, Bangladesh</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Looking for</p>
-                                                        <p class="info-details">Serious Relationshiop,Affair</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Smoking</p>
-                                                        <p class="info-details">Casual Smoker</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Language</p>
-                                                        <p class="info-details">English, French, Italian</p>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="info-card  mb-4">
-                                            <div class="info-card-title">
-                                                <h6>Physical info</h6>
-                                            </div>
-                                            <div class="info-card-content">
-                                                <ul class="info-list">
-                                                    <li>
-                                                        <p class="info-name">Height</p>
-                                                        <p class="info-details">5'8 ft</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Weight</p>
-                                                        <p class="info-details">72 kg</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Hair Color</p>
-                                                        <p class="info-details">Black</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Eye Color</p>
-                                                        <p class="info-details">Brown</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Body Type</p>
-                                                        <p class="info-details">Tall</p>
-                                                    </li>
-                                                    <li>
-                                                        <p class="info-name">Ethnicity</p>
-                                                        <p class="info-details">Middle Eastern</p>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="">
-                                            <div class="text-center">
-                                                {{form.errors}}
-                                                {% csrf_token %}
-                                                <button class="default-btn reverse" data-toggle="modal">
-                                                    <span>Сохранить профиль</span>
-                                                </button>
+                                    <div class="group__bottom--area group__bottom--memberactivity">
+                                        <div class="group__bottom--body">
+                                            <div class="group__bottom--allmedia">
+                                                <div class="media-wrapper">
+                                                    <div class="tab-content" id="myTabContent2">
+                                                        {% if profile_type == 'my' %}
+                                                        <div class="tab-pane fade show active" id="Profile" role="tabpanel" aria-labelledby="Profile-tab">
+                                                            {% include "user/my_profile/profile.html" %}
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if profile_type == 'climbing' %}
+                                                        <div class="tab-pane fade show active" id="Climbing" role="tabpanel" aria-labelledby="Climbing-tab">
+                                                            {% include "user/my_profile/climbing.html" %}
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if profile_type == 'account' %}
+                                                        <div class="tab-pane fade show active" id="Account" role="tabpanel" aria-labelledby="Account-tab">
+                                                            {% include "user/my_profile/account.html" %}
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    </form>
                                 </div>
