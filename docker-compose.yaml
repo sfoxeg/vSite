@@ -142,7 +142,7 @@ volumes:
 networks:
   db:
     name: db
-    driver: local
+    driver: bridge
 
   vsite:
     name: vsite
