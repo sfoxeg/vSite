@@ -3,6 +3,8 @@ django_extensions
 Pillow
 python-dateutil
 
+django-redis
+
 gunicorn
 psycopg2-binary
 
