@@ -1,0 +1,8 @@
+services:
+  nginx:
+    volumes:
+      - ./conf/nginx_dev.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx_log:/var/log/nginx
+      - ./staticfiles:/app/staticfiles:ro
+      - ./mediafiles:/app/mediafiles
+      - ./certs:/etc/nginx/certs:ro
