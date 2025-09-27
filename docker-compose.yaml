@@ -20,7 +20,7 @@ services:
       retries: 5
       start_period: 10s
     volumes:
-      - /volumes/pgdata:/var/lib/postgresql/data/pgdata
+      - ./volumes/pgdata:/var/lib/postgresql/data/pgdata
 
   redis:
     image: redis:8.2.1-alpine3.22
@@ -29,8 +29,9 @@ services:
       - db
     expose:
       - "6379"
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
-      - REDIS_DATABASES=16
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      REDIS_DATABASES: 16
     healthcheck:
       test: [ "CMD-SHELL", "redis-cli", "ping" ]
       interval: 10s
@@ -38,7 +39,7 @@ services:
       retries: 5
       start_period: 10s
     volumes:
-      - /volumes/redis-data:/data
+      - ./volumes/redis-data:/data
     depends_on:
       postgres:
         condition: service_healthy
@@ -52,7 +53,7 @@ services:
     entrypoint: [ "sh", "-c", "chmod +x /app/tools/builder && /app/tools/builder && chmod -x /app/tools/builder" ]
     volumes:
       - ./:/app
-      - /volumes/staticfiles:/app/staticfiles
+      - ./volumes/staticfiles:/app/staticfiles
     networks:
       - db
     environment:
@@ -102,8 +103,8 @@ services:
       start_period: 10s
     volumes:
       - ./:/app
-      - /volumes/staticfiles:/app/staticfiles
-      - /volumes/mediafiles:/app/mediafiles
+      - ./volumes/staticfiles:/app/staticfiles
+      - ./volumes/mediafiles:/app/mediafiles
     depends_on:
       builder:
         condition: service_healthy
@@ -124,10 +125,10 @@ services:
       start_period: 10s
     volumes:
       - ./conf/nginx.conf:/etc/nginx/nginx.conf:ro
-      - /volumes/certs:/etc/nginx/certs:ro
-      - /volumes/nginx_log:/var/log/nginx
-      - /volumes/staticfiles:/app/staticfiles:ro
-      - /volumes/mediafiles:/app/mediafiles
+      - ./volumes/certs:/etc/nginx/certs:ro
+      - ./volumes/nginx_log:/var/log/nginx
+      - ./volumes/staticfiles:/app/staticfiles:ro
+      - ./volumes/mediafiles:/app/mediafiles
     depends_on:
       web:
         condition: service_healthy

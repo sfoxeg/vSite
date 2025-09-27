@@ -52,15 +52,19 @@ class SearchView(LoginRequiredMixin, ListView):
             elif looking_for == 'female':
                 profiles = profiles.filter(user__sex=True)
 
+            WHERE_ALL = 2
+
             if int(leading) > 0:
                 profiles = profiles.filter(climbing__leading__gte=leading)
-                if int(where_leading) < 2:
-                    profiles = profiles.filter(climbing__where_leading=where_leading) | profiles.filter(climbing__where_leading=2)
+                if int(where_leading) < WHERE_ALL:
+                    profiles = profiles.filter(climbing__where_leading=where_leading) | profiles.filter(
+                        climbing__where_leading=WHERE_ALL)
 
             if int(bouldering) > 0:
                 profiles = profiles.filter(climbing__bouldering__gte=bouldering)
-                if int(where_bouldering) < 2:
-                    profiles = profiles.filter(climbing__where_bouldering=where_bouldering) | profiles.filter(climbing__where_bouldering=2)
+                if int(where_bouldering) < WHERE_ALL:
+                    profiles = profiles.filter(climbing__where_bouldering=where_bouldering) | profiles.filter(
+                        climbing__where_bouldering=WHERE_ALL)
 
             if int(belay) > 0:
                 profiles = profiles.filter(climbing__belay=belay)
