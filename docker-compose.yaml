@@ -39,6 +39,9 @@ services:
       start_period: 10s
     volumes:
       - ./redis-data:/data
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   builder:
     container_name: builder
@@ -102,9 +105,7 @@ services:
       - ./staticfiles:/app/staticfiles
       - ./mediafiles:/app/mediafiles
     depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
+      builder:
         condition: service_healthy
 
   nginx:
