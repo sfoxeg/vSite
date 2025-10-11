@@ -1,4 +1,4 @@
-FROM python:3.13.2-slim-bullseye
+FROM python:3.14.0-slim-trixie
 
 RUN apt update -y -q && apt install -y -q --no-install-recommends \
     gunicorn \
