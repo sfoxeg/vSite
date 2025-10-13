@@ -1,6 +1,6 @@
 del db.sqlite3
 rd /s/q user\migrations
-py manage.py makemigrations main user search
+py manage.py makemigrations main user search chat
 py manage.py migrate
 py manage.py create_users
 
