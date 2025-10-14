@@ -8,13 +8,13 @@
             <div class="col-lg-7">
                 <div class="log-reg-inner">
                     <div class="section-header">
-                        <h2 class="title">CatchMe</h2>
+                        <h2 class="title">ClimbDate</h2>
                         <p>Давайте создадим ваш профиль. Просто заполните поля ниже, и мы создадим вам новый аккаунт.</p>
                     </div>
                     <div class="main-content">
                         <form action="{% url "user:registration" %}" method="post">
                             <div class="form-group">
-                                <p class="f-pass"><a href="{% url "user:login" %}">У меня уже есть аккаунт</a></p>
+                                <p class="f-pass btn btn-outline-primary"><a href="{% url "user:login" %}">У меня уже есть аккаунт</a></p>
                             </div>
                             <div class="form-group">
                                 <input type="email" class="my-form-control" name="email"
