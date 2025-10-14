@@ -1,12 +1,10 @@
+python-dateutil
 django
 django_extensions
-Pillow
-python-dateutil
-
 django-redis
+Pillow
 
 gunicorn
 psycopg2-binary
-
 
 Faker
