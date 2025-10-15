@@ -4007,7 +4007,7 @@ a[class*=lightcase-icon-] {
   transform: scale(1);
 }
 .group--single .story__item.style2 .story__inner:hover .story__content h4 {
-  color: #213366;
+  color: var(--h-color);
   text-decoration: none;
 }
 
@@ -4254,10 +4254,10 @@ a[class*=lightcase-icon-] {
   background: #f24570;
 }
 .log-reg .log-reg-inner .section-header .title {
-  color: #213366;
+  color: var(--a-color);
 }
 .log-reg .log-reg-inner .section-header P {
-  color: #213366;
+  color: var(--h-color);
 }
 .log-reg .log-reg-inner .section-header.inloginp {
   padding-top: 80px;
@@ -4267,7 +4267,7 @@ a[class*=lightcase-icon-] {
 }
 .log-reg .log-reg-inner .main-content .content-title {
   line-height: 34px;
-  color: #213366;
+  color: var(--h-color);
   font-size: calc(1.275rem + 0.3vw);
 }
 @media (min-width: 1200px) {
@@ -4305,7 +4305,7 @@ a[class*=lightcase-icon-] {
   color: #213366 !important;
 }
 .log-reg .log-reg-inner .main-content .form-group > .banner__inputlist {
-  background-color: #eaf2fc;
+  background-color: var(--background);
   padding-block: 10px;
 }
 .log-reg .log-reg-inner .main-content .form-group > .banner__inputlist input {
@@ -4323,13 +4323,13 @@ a[class*=lightcase-icon-] {
 }
 .log-reg .log-reg-inner .main-content .form-group > .banner__inputlist select {
   padding: 3px;
-  background-color: #eaf2fc;
+  background-color: var(--background);
 }
 .log-reg .log-reg-inner .main-content .default-btn {
   padding: 16px 40px;
 }
 .log-reg .log-reg-inner .main-content .f-pass a {
-  color: #213366;
+  color: var(--a-color);
 }
 .log-reg .log-reg-inner .main-content .f-pass a:hover {
   text-decoration: underline;
@@ -6421,6 +6421,15 @@ a[class*=lightcase-icon-] {
 }
 .terms-text ul {
   list-style-type: disc;
+}
+
+.story__content .default-btn {
+    background: #f24570;
+    color: var(--a-color);
+}
+
+.story__content .default-btn span {
+    color: var(--a-color);
 }
 
 .logo img {
