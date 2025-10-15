@@ -4007,7 +4007,7 @@ a[class*=lightcase-icon-] {
   transform: scale(1);
 }
 .group--single .story__item.style2 .story__inner:hover .story__content h4 {
-  color: #213366;
+  color: var(--h-color);
   text-decoration: none;
 }
 
@@ -6421,6 +6421,15 @@ a[class*=lightcase-icon-] {
 }
 .terms-text ul {
   list-style-type: disc;
+}
+
+.story__content .default-btn {
+    background: #f24570;
+    color: var(--a-color);
+}
+
+.story__content .default-btn span {
+    color: var(--a-color);
 }
 
 .logo img {
