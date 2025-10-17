@@ -1,6 +1,5 @@
 from django.views.generic import TemplateView
 from search.utils import cities, get_or_session
-from vSite.settings import DEBUG
 
 
 class IndexView(TemplateView):

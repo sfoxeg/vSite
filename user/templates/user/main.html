@@ -982,7 +982,7 @@
                                         <div class="story__content--content mb-2 pb-3">
                                             <p><i class="fa-solid fa-clock"></i> Active 3 Days Ago</p>
                                         </div>
-                                        {% if profile_type == 'id' %}<a class="default-btn d-block w-100 text-center" href="#"><span>Написать</span></a>{% endif %}
+                                        {% if profile_type == 'id' %}<a class="default-btn d-block w-100 text-center" href="{% url "chat:chat_list" %}"><span>Написать</span></a>{% endif %}
                                         <p class="mb-2">{{profile.description}}</p>
                                         <div class="story__content--author mt-3 pb-2">
                                             <h6 class="d-block w-100 mb-3">{{profile.name}} Photos</h6>

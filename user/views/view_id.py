@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView
-from user.forms import UserProfileForm
 from search.utils import cities, get_or_session
 from user.models import UserProfile
 

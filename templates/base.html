@@ -29,6 +29,9 @@
                                 <a href="{% url "search:search" %}">Поиск</a>
                             </li>
                             <li>
+                                <a href="{% url "chat:chat_list" %}">Сообщения</a>
+                            </li>
+                            <li>
                                 <a href="#">{% if user.profile.name != ' ' %}{{user.profile.name}}{% else %}Мой профиль{% endif %}</a>
                                 <ul>
                                     <li><a href="{% url "user:profile" %}">Профиль</a></li>

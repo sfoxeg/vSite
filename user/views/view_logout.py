@@ -1,10 +1,10 @@
-from django.contrib import auth
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse
+from django.contrib.auth import logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
+from django.views import View
 
 
-@login_required
-def logout(request) -> HttpResponse:
-    auth.logout(request)
-    return HttpResponseRedirect(reverse('main:index'))
+class LogoutView(LoginRequiredMixin, View):
+    def get(self, request):
+        logout(request)
+        return redirect('user:login')
