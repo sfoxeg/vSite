@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.urls import reverse_lazy
-from user.models import UserProfile, Climbing
+from user.models import UserProfile
 from search.utils import cities, get_or_session, date
 
 

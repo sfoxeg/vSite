@@ -6,32 +6,45 @@
         <div class="col-lg-4">
             <div class="list-group">
                 {% for chat in chats %}<a href="{% if chat.type == 'chat' %}{% url "chat:chat_id" chat.url %}{% elif chat.type == 'group' %}{% url "chat:chat_gid" chat.url %}{% else %}#{% endif %}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                    <svg><use href="{% static "assets/images/paper-fill.svg" %}"></use></svg>
+                    <div class="chat-list-avatar" style="background: url({% if chat.ava %}{{chat.ava.url}}{% else %}{% static "assets/images/member/profile/profile.jpg" %}{% endif %}); background-size: 40px 40px;">
+                    </div>
                     <div class="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <h6 class="mb-0">{% for user in chat.users %}{{ user }}{% endfor %}</h6>
                             <p class="mb-0 opacity-75 text-nowrap">
-                                <small class="opacity-50 message_check">{% if chat.is_read %}&#xF26F;{% else %}&#xF272;{% endif %} </small>
+                                <small class="opacity-50 message_check list-group-mc">{% if chat.is_read %}&#xF26F;{% else %}&#xF272;{% endif %}</small>
                                 {{ chat.last_message|truncatechars_html:30 }}
                             </p>
                         </div>
-                        <small class="opacity-50 text-nowrap">{{ chat.created_at|date:"h:m" }}</small>
+                        <small class="opacity-50 text-nowrap list-group-time">{{ chat.created_at|date:"h:m" }}</small>
                     </div>
                 </a>{% endfor %}
             </div>
         </div>
 
         <div class="col-lg-8">
+            {% if messages %}
             <div class="chat-window">
-                <div class="message text-end"><span class="chat-message">Тут чатовые сообщения</span></div>
-                <div class="message text-start"><span class="chat-message">И еще сообщения</span></div>
-                <div class="message text-end"><span class="chat-message">И еще немношк</span></div>
-
+                {% for message in messages %}
+                <div class="message">
+                    <div class="{% if message.im_sender %}my-msg{% else %}msg{% endif %}">
+                        <div class="chat-message">{{ message.text }}<div class="time-inner opacity-50">{% if message.im_sender %}<span class="message_check">{% if message.is_read %}&#xF26F;{% else %}&#xF272;{% endif %}</span>{% endif %}<span class="i18n">{{ message.created_at|date:"h:m" }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
                 <div class="input-group">
                     <input class="form-control text-end input-message" type="text" name="message" placeholder="Сообщение...">
                     <span class="input-group-text"><a href="#">&#xF6C0;</a></span>
                 </div>
             </div>
+            {% else %}
+            <div class="none-chat-window text-center">
+                <span class="align-middle">&#xF266;</span>
+                <p class="align-middle">Выберите чат</p>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
